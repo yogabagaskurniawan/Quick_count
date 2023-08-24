@@ -18,6 +18,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/user/event', function () {
+    return view('event');
+});
+
+Route::get('/user/detailevent', function () {
+    return view('detailevent');
+});
+
+Route::get('/user/detailkandidat', function () {
+    return view('detailkandidat');
+});
+
 Auth::routes();
 
 Route::group([
