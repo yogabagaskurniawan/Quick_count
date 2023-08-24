@@ -68,7 +68,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/admin') }}">Home</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
@@ -78,6 +78,15 @@
                     @endauth
                 </div>
             @endif
+
+            <a class="dropdown-item" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
 
             <div class="content">
                 <div class="title m-b-md">

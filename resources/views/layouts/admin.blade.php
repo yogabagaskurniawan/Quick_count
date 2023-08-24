@@ -4,22 +4,23 @@
     <head>
     
         <meta charset="utf-8">
-        <title>Dashboard | Veltrix - Admin & Dashboard Template</title>
+        <title>Dashboard | Quick Count</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description">
         <meta content="Themesbrand" name="author">
         <!-- App favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
+        <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
     
-        <link href="assets/libs/chartist/chartist.min.css" rel="stylesheet">
+        <link href="{{ asset('assets/libs/chartist/chartist.min.css') }}" rel="stylesheet">
     
         <!-- Bootstrap Css -->
-        <link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css">
+        <link href="{{ asset('assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css">
         <!-- Icons Css -->
-        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css">
+        <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css">
         <!-- App Css-->
-        <link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css">
-    
+        <link href="{{ asset('assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css">
+        
+        @yield('css')
     </head>
 
     <body data-sidebar="dark">
@@ -33,21 +34,21 @@
                     <div class="d-flex">
                         <!-- LOGO -->
                         <div class="navbar-brand-box">
-                            <a href="index.html" class="logo logo-dark">
+                            <a href="/admin" class="logo logo-dark">
                                 <span class="logo-sm">
-                                    <img src="assets/images/logo-sm.png" alt="" height="22">
+                                    <img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="22">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="assets/images/logo-dark.png" alt="" height="17">
+                                    <img src="{{ asset('assets/images/logo-dark.png') }}" alt="" height="17">
                                 </span>
                             </a>
 
-                            <a href="index.html" class="logo logo-light">
+                            <a href="/admin" class="logo logo-light">
                                 <span class="logo-sm">
-                                    <img src="assets/images/logo-sm.png" alt="" height="22">
+                                    <img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="22">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="assets/images/logo-light.png" alt="" height="18">
+                                    <img src="{{ asset('assets/images/logo-light.png') }}" alt="" height="18">
                                 </span>
                             </a>
                         </div>
@@ -90,13 +91,13 @@
                         <div class="dropdown d-none d-md-block ms-2">
                             <button type="button" class="btn header-item waves-effect"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="me-2" src="assets/images/flags/us_flag.jpg" alt="Header Language" height="16"> English <span class="mdi mdi-chevron-down"></span>
+                                <img class="me-2" src="{{ asset('assets/images/flags/us_flag.jpg') }}" alt="Header Language" height="16"> English <span class="mdi mdi-chevron-down"></span>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
                     
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <img src="assets/images/flags/germany_flag.jpg" alt="user-image" class="me-1" height="12"> <span class="align-middle"> German </span>
+                                    <img src="{{ asset('assets/images/flags/germany_flag.jpg') }} " alt="user-image" class="me-1" height="12"> <span class="align-middle"> German </span>
                                 </a>
                             </div>
                         </div>
@@ -172,7 +173,7 @@
                         <div class="dropdown d-inline-block">
                             <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="rounded-circle header-profile-user" src="assets/images/users/user-4.jpg"
+                                <img class="rounded-circle header-profile-user" src="{{ asset('assets/images/users/user-4.jpg') }}"
                                     alt="Header Avatar">
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
@@ -181,22 +182,15 @@
                                 <a class="dropdown-item d-flex align-items-center" href="#"><i class="mdi mdi-cog font-size-17 align-middle me-1"></i> Settings<span class="badge bg-success ms-auto">11</span></a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
-                                 onclick="event.preventDefault();
-                                               document.getElementById('logout-form').submit();">
-                                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
+                                    onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
                             </div>
                         </div>
-
-                        <div class="dropdown d-inline-block">
-                            <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
-                                <i class="mdi mdi-cog-outline"></i>
-                            </button>
-                        </div>
-            
                     </div>
                 </div>
             </header>
@@ -210,19 +204,19 @@
                     <div id="sidebar-menu">
                         <!-- Left Menu Start -->
                         <ul class="metismenu list-unstyled" id="side-menu">
-                            <li class="menu-title">Main</li>
+                            <li class="menu-title">Menu</li>
 
                             <li>
-                                <a href="index.html" class="waves-effect">
+                                <a href="/admin/mahasiswa" class="waves-effect">
                                     <i class="fa fa-user-plus" aria-hidden="true"></i>
-                                    <span>Add user</span>
+                                    <span>Mahasiswa</span>
                                 </a>
                             </li>
 
                             <li>
-                                <a href="calendar.html" class=" waves-effect">
+                                <a href="/admin/event" class=" waves-effect">
                                     <i class="fa fa-calendar-plus" aria-hidden="true"></i>
-                                    <span>Add event</span>
+                                    <span>Event</span>
                                 </a>
                             </li>
 
@@ -260,140 +254,146 @@
             <!-- Start right Content here -->
             <!-- ============================================================== -->
             <div class="main-content">
-
+                
                 <div class="page-content">
-                    <div class="container-fluid">
-
-                        <!-- start page title -->
-                        <div class="page-title-box">
-                            <div class="row align-items-center">
-                                <div class="col-md-8">
-                                    <h6 class="page-title">Dashboard</h6>
-                                    <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item active">Welcome to Veltrix Dashboard</li>
-                                    </ol>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="float-end d-none d-md-block">
-                                        <div class="dropdown">
-                                            <button class="btn btn-primary  dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="mdi mdi-cog me-2"></i> Settings
-                                            </button>
-                                            <div class="dropdown-menu dropdown-menu-end">
-                                                <a class="dropdown-item" href="#">Action</a>
-                                                <a class="dropdown-item" href="#">Another action</a>
-                                                <a class="dropdown-item" href="#">Something else here</a>
-                                                <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item" href="#">Separated link</a>
+                    @if (Route::is('admin'))
+                        <div class="container-fluid">
+        
+                            <!-- start page title -->
+                            <div class="page-title-box">
+                                <div class="row align-items-center">
+                                    <div class="col-md-8">
+                                        <h6 class="page-title">Dashboard</h6>
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item active">Welcome to Veltrix Dashboard</li>
+                                        </ol>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="float-end d-none d-md-block">
+                                            <div class="dropdown">
+                                                <button class="btn btn-primary  dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="mdi mdi-cog me-2"></i> Settings
+                                                </button>
+                                                <div class="dropdown-menu dropdown-menu-end">
+                                                    <a class="dropdown-item" href="#">Action</a>
+                                                    <a class="dropdown-item" href="#">Another action</a>
+                                                    <a class="dropdown-item" href="#">Something else here</a>
+                                                    <div class="dropdown-divider"></div>
+                                                    <a class="dropdown-item" href="#">Separated link</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <!-- end page title -->
+                            
+                            <div class="row">
+                                <div class="col-xl-3 col-md-6">
+                                    <div class="card mini-stat bg-primary text-white">
+                                        <div class="card-body">
+                                            <div class="mb-4">
+                                                <div class="float-start mini-stat-img me-4">
+                                                    <img src="assets/images/services-icon/01.png" alt="">
+                                                </div>
+                                                <h5 class="font-size-16 text-uppercase text-white-50">Orders</h5>
+                                                <h4 class="fw-medium font-size-24">1,685 <i
+                                                        class="mdi mdi-arrow-up text-success ms-2"></i></h4>
+                                                <div class="mini-stat-label bg-success">
+                                                    <p class="mb-0">+ 12%</p>
+                                                </div>
+                                            </div>
+                                            <div class="pt-2">
+                                                <div class="float-end">
+                                                    <a href="#" class="text-white-50"><i class="mdi mdi-arrow-right h5 text-white-50"></i></a>
+                                                </div>
+        
+                                                <p class="text-white-50 mb-0 mt-1">Since last month</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-6">
+                                    <div class="card mini-stat bg-primary text-white">
+                                        <div class="card-body">
+                                            <div class="mb-4">
+                                                <div class="float-start mini-stat-img me-4">
+                                                    <img src="assets/images/services-icon/02.png" alt="">
+                                                </div>
+                                                <h5 class="font-size-16 text-uppercase text-white-50">Revenue</h5>
+                                                <h4 class="fw-medium font-size-24">52,368 <i
+                                                        class="mdi mdi-arrow-down text-danger ms-2"></i></h4>
+                                                <div class="mini-stat-label bg-danger">
+                                                    <p class="mb-0">- 28%</p>
+                                                </div>
+                                            </div>
+                                            <div class="pt-2">
+                                                <div class="float-end">
+                                                    <a href="#" class="text-white-50"><i class="mdi mdi-arrow-right h5 text-white-50"></i></a>
+                                                </div>
+        
+                                                <p class="text-white-50 mb-0 mt-1">Since last month</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-6">
+                                    <div class="card mini-stat bg-primary text-white">
+                                        <div class="card-body">
+                                            <div class="mb-4">
+                                                <div class="float-start mini-stat-img me-4">
+                                                    <img src="assets/images/services-icon/03.png" alt="">
+                                                </div>
+                                                <h5 class="font-size-16 text-uppercase text-white-50">Average Price</h5>
+                                                <h4 class="fw-medium font-size-24">15.8 <i
+                                                        class="mdi mdi-arrow-up text-success ms-2"></i></h4>
+                                                <div class="mini-stat-label bg-info">
+                                                    <p class="mb-0"> 00%</p>
+                                                </div>
+                                            </div>
+                                            <div class="pt-2">
+                                                <div class="float-end">
+                                                    <a href="#" class="text-white-50"><i class="mdi mdi-arrow-right h5 text-white-50"></i></a>
+                                                </div>
+        
+                                                <p class="text-white-50 mb-0 mt-1">Since last month</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-md-6">
+                                    <div class="card mini-stat bg-primary text-white">
+                                        <div class="card-body">
+                                            <div class="mb-4">
+                                                <div class="float-start mini-stat-img me-4">
+                                                    <img src="assets/images/services-icon/04.png" alt="">
+                                                </div>
+                                                <h5 class="font-size-16 text-uppercase text-white-50">Product Sold</h5>
+                                                <h4 class="fw-medium font-size-24">2436 <i
+                                                        class="mdi mdi-arrow-up text-success ms-2"></i></h4>
+                                                <div class="mini-stat-label bg-warning">
+                                                    <p class="mb-0">+ 84%</p>
+                                                </div>
+                                            </div>
+                                            <div class="pt-2">
+                                                <div class="float-end">
+                                                    <a href="#" class="text-white-50"><i class="mdi mdi-arrow-right h5 text-white-50"></i></a>
+                                                </div>
+        
+                                                <p class="text-white-50 mb-0 mt-1">Since last month</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end row -->
+        
+                        </div> <!-- container-fluid -->
+                    @else
+                        <div class="container-fluid">   
+                            @yield('content')
                         </div>
-                        <!-- end page title -->
-                        
-                        <div class="row">
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card mini-stat bg-primary text-white">
-                                    <div class="card-body">
-                                        <div class="mb-4">
-                                            <div class="float-start mini-stat-img me-4">
-                                                <img src="assets/images/services-icon/01.png" alt="">
-                                            </div>
-                                            <h5 class="font-size-16 text-uppercase text-white-50">Orders</h5>
-                                            <h4 class="fw-medium font-size-24">1,685 <i
-                                                    class="mdi mdi-arrow-up text-success ms-2"></i></h4>
-                                            <div class="mini-stat-label bg-success">
-                                                <p class="mb-0">+ 12%</p>
-                                            </div>
-                                        </div>
-                                        <div class="pt-2">
-                                            <div class="float-end">
-                                                <a href="#" class="text-white-50"><i class="mdi mdi-arrow-right h5 text-white-50"></i></a>
-                                            </div>
-
-                                            <p class="text-white-50 mb-0 mt-1">Since last month</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card mini-stat bg-primary text-white">
-                                    <div class="card-body">
-                                        <div class="mb-4">
-                                            <div class="float-start mini-stat-img me-4">
-                                                <img src="assets/images/services-icon/02.png" alt="">
-                                            </div>
-                                            <h5 class="font-size-16 text-uppercase text-white-50">Revenue</h5>
-                                            <h4 class="fw-medium font-size-24">52,368 <i
-                                                    class="mdi mdi-arrow-down text-danger ms-2"></i></h4>
-                                            <div class="mini-stat-label bg-danger">
-                                                <p class="mb-0">- 28%</p>
-                                            </div>
-                                        </div>
-                                        <div class="pt-2">
-                                            <div class="float-end">
-                                                <a href="#" class="text-white-50"><i class="mdi mdi-arrow-right h5 text-white-50"></i></a>
-                                            </div>
-
-                                            <p class="text-white-50 mb-0 mt-1">Since last month</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card mini-stat bg-primary text-white">
-                                    <div class="card-body">
-                                        <div class="mb-4">
-                                            <div class="float-start mini-stat-img me-4">
-                                                <img src="assets/images/services-icon/03.png" alt="">
-                                            </div>
-                                            <h5 class="font-size-16 text-uppercase text-white-50">Average Price</h5>
-                                            <h4 class="fw-medium font-size-24">15.8 <i
-                                                    class="mdi mdi-arrow-up text-success ms-2"></i></h4>
-                                            <div class="mini-stat-label bg-info">
-                                                <p class="mb-0"> 00%</p>
-                                            </div>
-                                        </div>
-                                        <div class="pt-2">
-                                            <div class="float-end">
-                                                <a href="#" class="text-white-50"><i class="mdi mdi-arrow-right h5 text-white-50"></i></a>
-                                            </div>
-
-                                            <p class="text-white-50 mb-0 mt-1">Since last month</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card mini-stat bg-primary text-white">
-                                    <div class="card-body">
-                                        <div class="mb-4">
-                                            <div class="float-start mini-stat-img me-4">
-                                                <img src="assets/images/services-icon/04.png" alt="">
-                                            </div>
-                                            <h5 class="font-size-16 text-uppercase text-white-50">Product Sold</h5>
-                                            <h4 class="fw-medium font-size-24">2436 <i
-                                                    class="mdi mdi-arrow-up text-success ms-2"></i></h4>
-                                            <div class="mini-stat-label bg-warning">
-                                                <p class="mb-0">+ 84%</p>
-                                            </div>
-                                        </div>
-                                        <div class="pt-2">
-                                            <div class="float-end">
-                                                <a href="#" class="text-white-50"><i class="mdi mdi-arrow-right h5 text-white-50"></i></a>
-                                            </div>
-
-                                            <p class="text-white-50 mb-0 mt-1">Since last month</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end row -->
-
-                    </div> <!-- container-fluid -->
+                    @endif
                 </div>
                 <!-- End Page-content -->
 
@@ -415,76 +415,38 @@
         </div>
         <!-- END layout-wrapper -->
 
-        <!-- Right Sidebar -->
-        <div class="right-bar">
-            <div data-simplebar class="h-100">
-                <div class="rightbar-title px-3 py-4">
-                    <a href="javascript:void(0);" class="right-bar-toggle float-end">
-                        <i class="mdi mdi-close noti-icon"></i>
-                    </a>
-                    <h5 class="m-0">Settings</h5>
-                </div>
-
-                <!-- Settings -->
-                <hr class="mt-0" />
-                <h6 class="text-center">Choose Layouts</h6>
-
-                <div class="p-4">
-                    <div class="mb-2">
-                        <img src="assets/images/layouts/layout-1.jpg" class="img-fluid img-thumbnail" alt="">
-                    </div>
-                    <div class="form-check form-switch mb-3">
-                        <input type="checkbox" class="form-check-input theme-choice" id="light-mode-switch" checked />
-                        <label class="form-check-label" for="light-mode-switch">Light Mode</label>
-                    </div>
-    
-                    <div class="mb-2">
-                        <img src="assets/images/layouts/layout-2.jpg" class="img-fluid img-thumbnail" alt="">
-                    </div>
-                    <div class="form-check form-switch mb-3">
-                        <input type="checkbox" class="form-check-input theme-choice" id="dark-mode-switch" data-bsStyle="assets/css/bootstrap-dark.min.css" 
-                            data-appStyle="assets/css/app-dark.min.css" />
-                        <label class="form-check-label" for="dark-mode-switch">Dark Mode</label>
-                    </div>
-    
-                    <div class="mb-2">
-                        <img src="assets/images/layouts/layout-3.jpg" class="img-fluid img-thumbnail" alt="">
-                    </div>
-                    <div class="form-check form-switch mb-5">
-                        <input type="checkbox" class="form-check-input theme-choice" id="rtl-mode-switch" data-appStyle="assets/css/app-rtl.min.css" />
-                        <label class="form-check-label" for="rtl-mode-switch">RTL Mode</label>
-                    </div>
-                    {{-- <div class="d-grid">
-                        <a href="https://1.envato.market/grNDB" class="btn btn-primary mt-3" target="_blank"><i class="mdi mdi-cart me-1"></i> Purchase Now</a>
-                    </div> --}}
-                </div>
-
-            </div> <!-- end slimscroll-menu-->
-        </div>
-        <!-- /Right-bar -->
-
         <!-- Right bar overlay-->
         <div class="rightbar-overlay"></div>
 
         <!-- JAVASCRIPT -->
-        <script src="assets/libs/jquery/jquery.min.js"></script>
-        <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/libs/metismenu/metisMenu.min.js"></script>
-        <script src="assets/libs/simplebar/simplebar.min.js"></script>
-        <script src="assets/libs/node-waves/waves.min.js"></script>
+        <script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
+        <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('assets/libs/metismenu/metisMenu.min.js') }}"></script>
+        <script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
+        <script src="{{ asset('assets/libs/node-waves/waves.min.js') }}"></script>
 
 
         <!-- Peity chart-->
-        <script src="assets/libs/peity/jquery.peity.min.js"></script>
+        <script src="{{ asset('assets/libs/peity/jquery.peity.min.js') }}"></script>
 
         <!-- Plugin Js-->
-        <script src="assets/libs/chartist/chartist.min.js"></script>
-        <script src="assets/libs/chartist-plugin-tooltips/chartist-plugin-tooltip.min.js"></script>
+        <script src="{{ asset('assets/libs/chartist/chartist.min.js') }}"></script>
+        <script src="{{ asset('assets/libs/chartist-plugin-tooltips/chartist-plugin-tooltip.min.js') }}"></script>
 
-        <script src="assets/js/pages/dashboard.init.js"></script>
+        <script src="{{ asset('assets/js/pages/dashboard.init.js') }}"></script>
 
-        <script src="assets/js/app.js"></script>
+        <script src="{{ asset('assets/js/app.js') }}"></script>
 
+        @yield('script')
+
+        <script>
+            // demo img file
+            function preview(target, image){
+                $(target)
+                .attr('src', window.URL.createObjectURL(image))
+                .show();
+            }
+        </script>
     </body>
 
 </html>

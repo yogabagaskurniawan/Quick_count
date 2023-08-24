@@ -20,5 +20,17 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/admin', 'HomeController@indexadmin')->name('admin');
+Route::group([
+    'middleware' => ['auth', 'role:admin'] 
+    ],
+    function() {
+        Route::get('/admin', 'HomeController@indexadmin')->name('admin');
+
+        // Mahasiswa
+        Route::resource('/admin/mahasiswa', 'UserController');
+
+        // event
+        Route::resource('/admin/event', 'EventController');
+
+    }
+);
