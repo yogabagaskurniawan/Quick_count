@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-<<<<<<< HEAD
+
 Route::get('/hasil-event', function () {
     return view('umum.resultEvent');
 });
@@ -28,9 +28,6 @@ Route::get('/hasil-vote', function () {
 });
 
 
-
-
-=======
 Route::get('/user/event', function () {
     return view('event');
 });
@@ -59,4 +56,4 @@ Route::group([
 
     }
 );
->>>>>>> ff47ed981a93888a4520f4a505796419d947e964
+
