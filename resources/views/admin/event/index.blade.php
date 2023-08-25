@@ -47,6 +47,7 @@
                         <th >No</th>
                         <th>Name</th>
                         <th>Image</th>
+                        <th>Tanggal Mulai</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -60,14 +61,10 @@
                             <td>{{ $no++ }}</td>
                             <td>{{ $event->name }}</td>
                             <td><img src="{{ asset('storage/'.$event->image) }}" style="width:150px"/></td>
+                            <td>{{ $event->tgl_mulai }}</td>
                             <td>{{ $event->status }}</td>
                             <td>
-                                <a href="{{ url('admin/event/' . $event->id . '/edit') }}" class="btn btn-warning btn-sm">Edit</a>
-                                <form action="{{ route('event.destroy', $event->id) }}" method="POST" class="d-inline">
-                                    @method('DELETE')
-                                    @csrf
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah yakin untuk menghapus?')">Delete</button>
-                                </form>                                
+                                <a href="{{ url('admin/event/' . $event->id . '/edit') }}" class="btn btn-warning btn-sm">Edit</a>                              
                             </td>
                         </tr>
                         @endforeach

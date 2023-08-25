@@ -5,11 +5,11 @@
 <div class="page-title-box">
     <div class="row align-items-center">
         <div class="col-md-8">
-            <h6 class="page-title">Add Event</h6>
+            <h6 class="page-title">Edit Event</h6>
             <ol class="breadcrumb m-0">
                 <li class="breadcrumb-item"><a href="/admin">Home</a></li>
                 <li class="breadcrumb-item"><a href="/admin/event">Event</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Add Event</li>
+                <li class="breadcrumb-item active" aria-current="page">Edit Event</li>
             </ol>
         </div>
     </div>
@@ -21,11 +21,12 @@
         <div class="card">
             <div class="card-body">
 
-                <form class="custom-validation row g-3" method="POST" action="{{ route('event.store') }}" enctype="multipart/form-data">
+                <form class="custom-validation row g-3" method="POST" action="{{  route('event.update', $event->id) }}" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="mb-3 col-md-4">
                         <label class="form-label" for="name">Name</label>
-                        <input type="text" id="name" name="name" class="form-control @error('name') has-error @enderror"  placeholder="name" value="{{ old('name') }}">
+                        <input type="text" id="name" name="name" class="form-control @error('name') has-error @enderror"  placeholder="name" value="{{ $event->name ?? '' }}">
                         @error('name')
                             <p class="help-block text-danger">{{ $message }}</p>
                         @enderror
@@ -34,9 +35,9 @@
                     <div class="mb-3 col-md-4">
                         <label for="status">Select status</label>
                         <select name="status"  class="form-select" aria-label="Default select example">
-                            <option value="aktif">Aktif</option>
-                            <option value="non-aktif">Non Aktif</option>
-                            <option value="delete">Delete</option>
+                            <option value="aktif" @if ($event->status === 'aktif') selected @endif>Aktif</option>
+                            <option value="non-aktif" @if ($event->status === 'non-aktif') selected @endif>Non Aktif</option>
+                            <option value="delete" @if ($event->status === 'delete') selected @endif>delete</option>
                         </select>
                         @error('status')
                             <p class="help-block text-danger">{{ $message }}</p>
@@ -45,7 +46,7 @@
                     
                     <div class="mb-3 col-md-4">
                         <label class="form-label" for="tgl_mulai">Tanggal Mulai</label>
-                        <input class="form-control @error('tgl_mulai') has-error @enderror" type="datetime-local" id="tgl_mulai" name="tgl_mulai">
+                        <input class="form-control @error('tgl_mulai') has-error @enderror" type="datetime-local" id="tgl_mulai" name="tgl_mulai" value="{{ $event->tgl_mulai ?? '' }}">
                         @error('tgl_mulai')
                             <p class="help-block text-danger">{{ $message }}</p>
                         @enderror
@@ -58,13 +59,16 @@
                             <p class="help-block text-danger">{{ $message }}</p>
                         @enderror
                         <div class="col-md mt-3">
-                            <img src="" alt="" class="img-preview img-fluid mb-3 col-sm-5 d-block imageDemo">
+                            <input type="hidden" name="oldImage" value="{{ $event->image }}">
+                            @if ($event->image)
+                                <img src="{{ asset('storage/'.$event->image) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block imageDemo">   
+                            @endif
                         </div>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Deskripsi</label>
-                        <textarea id="elm1" name="deskripsi">{{ old('deskripsi') }}</textarea>
+                        <textarea id="elm1" name="deskripsi">{{ $event->deskripsi }}</textarea>
                         @error('deskripsi')
                             <p class="help-block text-danger">{{ $message }}</p>
                         @enderror

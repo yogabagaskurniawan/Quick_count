@@ -12,5 +12,6 @@ class Event extends Model
         'deskripsi',
         'status',
         'slug',
+        'tgl_mulai'
     ];
 }

@@ -51,10 +51,12 @@
 
                     <div class="mb-3">
                         <label for="role">Select Role (optional)</label>
-                        <select class="form-control" name="role" id="role">
-                            <option value="" @if ($mahasiswa->role === '') @endif>Optional</option>
+                        <select class="form-select" aria-label="Default select example" name="role" id="role">                            <option value="" @if ($mahasiswa->role === '') @endif>Optional</option>
                             <option value="admin" @if ($mahasiswa->role === 'admin') selected @endif>admin</option>
                         </select>
+                        @error('role')
+                            <p class="help-block text-danger">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="mb-0">
                         <div>

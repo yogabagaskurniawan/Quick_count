@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -37,22 +39,25 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-
-        $this->validate($request, [
-            'name' => 'string|required|min:2',
-            'nim' => 'integer|unique:users|required|min:8',
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|min:2',
+            'nim' => 'required|integer|unique:users|min:8',
+            'role' => Rule::in(['admin', null]),
             'password' => 'required|min:6',
         ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
         $data = $request->only(['name', 'nim', 'role']);
         $data['password'] = Hash::make($request->input('password'));
 
-        // Simpan data pengguna ke dalam database
         User::create($data);
 
-        // Redirect atau lakukan tindakan lain setelah penyimpanan berhasil
         return redirect('/admin/mahasiswa')->with('success', 'Data berhasil disimpan!');
     }
+
 
     /**
      * Display the specified resource.
@@ -89,6 +94,7 @@ class UserController extends Controller
         $this->validate($request, [
             'name' => 'string|required|min:2',
             'nim' => 'required|unique:users,nim,' . $id, 
+            'role' => Rule::in(['admin', null]),
             'password' => 'required|min:6',
         ]);
 

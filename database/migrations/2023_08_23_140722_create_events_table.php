@@ -20,6 +20,7 @@ class CreateEventsTable extends Migration
             $table->longText('deskripsi');
             $table->enum('status',['aktif', 'non-aktif', 'delete']); 
             $table->string('slug');
+            $table->string('tgl_mulai');
             $table->timestamps();
         });
     }

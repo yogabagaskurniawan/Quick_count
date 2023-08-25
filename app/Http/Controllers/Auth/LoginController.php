@@ -34,7 +34,6 @@ class LoginController extends Controller
     protected function sendFailedLoginResponse(Request $request)
     {
         throw ValidationException::withMessages([
-            'nim' => [trans('auth.failed')],
             'password' => [trans('auth.failed')],
         ]);
     }
