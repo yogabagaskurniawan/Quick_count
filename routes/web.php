@@ -18,6 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+<<<<<<< HEAD
 Route::get('/hasil-event', function () {
     return view('umum.resultEvent');
 });
@@ -27,7 +28,35 @@ Route::get('/hasil-vote', function () {
 });
 
 
+
+
+=======
+Route::get('/user/event', function () {
+    return view('event');
+});
+
+Route::get('/user/detailevent', function () {
+    return view('detailevent');
+});
+
+Route::get('/user/detailkandidat', function () {
+    return view('detailkandidat');
+});
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group([
+    'middleware' => ['auth', 'role:admin'] 
+    ],
+    function() {
+        Route::get('/admin', 'HomeController@indexadmin')->name('admin');
 
+        // Mahasiswa
+        Route::resource('/admin/mahasiswa', 'UserController');
+
+        // event
+        Route::resource('/admin/event', 'EventController');
+
+    }
+);
+>>>>>>> ff47ed981a93888a4520f4a505796419d947e964
