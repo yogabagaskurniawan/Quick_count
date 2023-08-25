@@ -148,12 +148,11 @@
                                     <ul id="myTab" class="education-experience-nav-tab">
                                         <li class="nav-item w-100">
                                             <a class="resume-nav-tab-item nav-link active" href="#experience"
-                                                data-bs-toggle="tab">Professional
-                                                Experiences</a>
+                                                data-bs-toggle="tab">Vote</a>
                                         </li>
                                         <li class="nav-item w-100">
                                             <a class="resume-nav-tab-item nav-link" href="#education"
-                                                data-bs-toggle="tab">Education</a>
+                                                data-bs-toggle="tab">Detail</a>
                                         </li>
                                     </ul>
                                 </div>
