@@ -18,7 +18,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/hasil-event', function () {
+    return view('umum.resultEvent');
+});
+
+Route::get('/hasil-vote', function () {
+    return view('umum.resultVote');
+});
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/admin', 'HomeController@indexadmin')->name('admin');
+
