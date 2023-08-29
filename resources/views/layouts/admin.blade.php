@@ -221,7 +221,7 @@
                             </li>
 
                             <li>
-                                <a href="calendar.html" class=" waves-effect">
+                                <a href="/admin/kandidat" class=" waves-effect">
                                     <i class="fa fa-users" aria-hidden="true"></i>
                                     <span>Add kandidat</span>
                                 </a>

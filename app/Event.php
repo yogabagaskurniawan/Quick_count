@@ -19,4 +19,9 @@ class Event extends Model
     {
         return $query->where('status', 'aktif')->orderBy('created_at', 'DESC');
     }
+
+        public function Kandidats()
+    {
+        return $this->hasMany(Kandidat::class);
+    }
 }
