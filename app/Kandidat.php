@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Event extends Model
+class Kandidat extends Model
 {
     protected $fillable = [
         'name',
@@ -12,11 +12,11 @@ class Event extends Model
         'deskripsi',
         'status',
         'slug',
-        'tgl_mulai'
+        'event_id'
     ];
-
-    public function Kandidats()
+    
+    public function Event()
     {
-        return $this->hasMany(Kandidat::class);
+        return $this->belongsTo(Event::class);
     }
 }

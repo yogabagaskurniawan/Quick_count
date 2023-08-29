@@ -54,6 +54,9 @@ Route::group([
         // event
         Route::resource('/admin/event', 'EventController');
 
+        // kandidat
+        Route::resource('/admin/kandidat', 'KandidatController');
+
     }
 );
 
