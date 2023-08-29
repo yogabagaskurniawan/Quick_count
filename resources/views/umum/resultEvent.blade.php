@@ -32,7 +32,7 @@
     <!-- font awesome stylesheet -->
     <link rel="stylesheet" href="{{asset ('css/all.min.css')}}">
     <!-- AOS stylesheet -->
-    <link rel="stylesheet" href="{{asset('css/aos.css')}}">
+    <link rel="stylesheet" href="{{asset ('css/aos.css')}}">
     <!-- Normalize CSS -->
     <link rel="stylesheet" href="{{asset ('css/normalize.css')}}">
     <!-- Main stylesheet -->
@@ -110,7 +110,7 @@
                         <div class="section-heading-middle">
                             <div class="sub-heading d-flex align-items-center mx-auto">
                                 <img src="img/orangeDot.png" alt="orange-dot">
-                                {{-- <p>My Blog</p> --}}
+                                <p>My Blog</p>
                             </div>
                             <h2 class="black-color line-height-3 h2 text-uppercase text-center">
                                 Hasil Event

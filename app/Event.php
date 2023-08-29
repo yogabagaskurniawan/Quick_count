@@ -14,4 +14,9 @@ class Event extends Model
         'slug',
         'tgl_mulai'
     ];
+
+    public function scopeActive($query)
+    {
+        return $query->where('status', 'aktif')->orderBy('created_at', 'DESC');
+    }
 }

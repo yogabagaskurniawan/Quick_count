@@ -120,7 +120,7 @@ class EventController extends Controller
 
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
             $image = $request->file('image');
-            $name = 'artikel_' . time();
+            $name = 'event_' . time();
             $filename = $name . '.' . $image->getClientOriginalExtension();
             $folder = '/uploads/images';
             $filePath = $image->storeAs($folder, $filename, 'public');
@@ -151,5 +151,11 @@ class EventController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function detailEvent($id)
+    {
+        $event = Event::findOrFail($id);
+        return view('admin.event.detailEvent', compact('event'));
     }
 }

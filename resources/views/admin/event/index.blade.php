@@ -65,6 +65,7 @@
                             <td>{{ $event->status }}</td>
                             <td>
                                 <a href="{{ url('admin/event/' . $event->id . '/edit') }}" class="btn btn-warning btn-sm">Edit</a>                              
+                                <a href="{{ url('admin/event/' . $event->id . '/detail-event') }}" class="btn btn-success btn-sm">Detail</a>                              
                             </td>
                         </tr>
                         @endforeach

@@ -14,11 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
 Route::get('/hasil-event', function () {
     return view('umum.resultEvent');
 });
@@ -28,9 +23,9 @@ Route::get('/hasil-vote', function () {
 });
 
 
-Route::get('/user/event', function () {
-    return view('event');
-});
+// Route::get('/user/event', function () {
+//     return view('event');
+// });
 
 Route::get('/user/detailevent', function () {
     return view('detailevent');
@@ -40,8 +35,19 @@ Route::get('/user/detailkandidat', function () {
     return view('detailkandidat');
 });
 
+// user
+Route::group(
+    ['namespace' => 'user'],
+    function () {
+        Route::get('/', 'HomePageController@index');
+        // event
+        Route::get('/event/{slug}', 'HomePageController@detailEvent');
+    }
+);
+
 Auth::routes();
 
+// admin
 Route::group([
     'middleware' => ['auth', 'role:admin'] 
     ],
@@ -53,7 +59,7 @@ Route::group([
 
         // event
         Route::resource('/admin/event', 'EventController');
-
+        Route::get('admin/event/{id}/detail-event', 'EventController@detailEvent');
     }
 );
 
