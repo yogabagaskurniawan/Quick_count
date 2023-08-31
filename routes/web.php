@@ -36,6 +36,7 @@ Route::group(
         Route::get('/daftar-kandidat/{slug}', 'HomePageController@listKandidat');
         Route::get('/detail-kandidat/{slug}', 'HomePageController@detailKandidat');
         
+        Route::post('/kandidat/pilih/{slug}', 'VoteController@store');
     }
 );
 

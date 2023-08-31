@@ -19,9 +19,14 @@ class Kandidat extends Model
     {
         return $this->belongsTo(Event::class);
     }
-
+    
     public function scopeActive($query)
     {
         return $query->where('status', 'aktif')->orderBy('created_at', 'DESC');
+    }
+    
+    public function vote()
+    {
+        return $this->hasOne('App\Vote', 'kandidat_id', 'id');
     }
 }

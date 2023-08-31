@@ -20,8 +20,18 @@ class Event extends Model
         return $query->where('status', 'aktif')->orderBy('created_at', 'DESC');
     }
 
-        public function Kandidats()
+    public function Kandidats()
     {
         return $this->hasMany(Kandidat::class);
+    }
+
+    public function vote()
+    {
+        return $this->hasMany('App\Vote', 'event_id', 'id');
+    }
+
+    public function userVote()
+    {
+        return $this->hasMany('App\UserVote', 'event_id', 'id');
     }
 }
