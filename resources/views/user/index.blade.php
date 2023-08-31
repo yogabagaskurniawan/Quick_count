@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- start banner -->
-<section class="home-banner position-relative">
+<section class="home-banner position-relative" style="padding-top: 100px; padding-bottom: 50px">
     <div class="container-fluid custom-container">
         <div class="row">
             <div class="col-12">
@@ -22,9 +22,6 @@
                             yang holistik bagi para mahasiswa. Terletak di lingkungan yang inspiratif dan modern,
                             kampus kami dirancang untuk mendorong pertumbuhan akademik, pribadi, dan profesional.
                         </p>
-                        {{-- <a class="btn_effect btn home-banner-btn orange-btn mt-50" href="resume.html"><span
-                                class="z-1 position-relative">Daftar</span>
-                        </a> --}}
                         <div class="banner-particle-one-container">
                             <img class="position-absolute banner-particle-one d-none d-lg-inline"
                                 src="{{ asset('guests/img/particleOne.png') }}" alt="banner particle one">
@@ -75,13 +72,6 @@
                                         {{ \Carbon\Carbon::parse($event->tgl_mulai)->format('d F, Y H:i:s') }}
                                     </p>                                    
                                     <h3 class="card-title h3 fw-600 line-height-3 black-color">{{ $event->name }}</h3>
-                                    {{-- <a href="/event/{{ $event->slug }}">
-                                        <div class="blog-card-btn d-flex align-items-center mt-4">
-                                            <span
-                                                class="blog-card-btn-text mr-10 .font-urbanist fw-600 line-height-7 orange-color">masuk</span>
-                                            <i class="fa-solid fa-arrow-right"></i>
-                                        </div>
-                                    </a> --}}
                                     <a href="#" class="blog-card-btn d-flex align-items-center mt-4" data-event-slug="{{ $event->slug }}">
                                         <span class="blog-card-btn-text mr-10 .font-urbanist fw-600 line-height-7 orange-color">masuk</span>
                                         <i class="fa-solid fa-arrow-right"></i>

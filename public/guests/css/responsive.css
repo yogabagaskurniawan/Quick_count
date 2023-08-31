@@ -636,6 +636,7 @@
 
     .logo img {
         max-width: 90px;
+        padding-top: 10px;
     }
 
     header .orange-btn {

@@ -47,7 +47,10 @@ class KandidatController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'deskripsi' => 'required',
             'status' => 'required|in:aktif,non-aktif,delete',
-            'event_id' => 'required',
+            'event_id' => [
+                'required',
+                'exists:events,id', // validasi bahwa event_id harus ada di dalam tabel events dengan kolom id
+            ],
         ]);
 
         if ($validator->fails()) {
@@ -115,7 +118,10 @@ class KandidatController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'deskripsi' => 'required',
             'status' => 'required|in:aktif,non-aktif,delete',
-            'event_id' => 'required',
+            'event_id' => [
+                'required',
+                'exists:events,id', // validasi bahwa event_id harus ada di dalam tabel events dengan kolom id
+            ],
         ]);
 
         if ($validator->fails()) {
@@ -156,5 +162,11 @@ class KandidatController extends Controller
     public function destroy(Kandidat $kandidat)
     {
         //
+    }
+
+    public function detailKandidat($id)
+    {
+        $kandidat = Kandidat::findOrFail($id);
+        return view('admin.kandidat.detailKandidat', compact('kandidat'));
     }
 }

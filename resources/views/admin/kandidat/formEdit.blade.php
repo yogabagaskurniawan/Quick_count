@@ -8,7 +8,7 @@
             <h6 class="page-title">Edit Kandidat</h6>
             <ol class="breadcrumb m-0">
                 <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-                <li class="breadcrumb-item"><a href="/admin/event">Kandidat</a></li>
+                <li class="breadcrumb-item"><a href="/admin/kandidat">Kandidat</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Edit Kandidat</li>
             </ol>
         </div>

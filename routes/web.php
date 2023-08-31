@@ -22,15 +22,6 @@ Route::get('/hasil-vote', function () {
     return view('umum.resultVote');
 });
 
-
-// Route::get('/user/event', function () {
-//     return view('event');
-// });
-
-Route::get('/user/detailevent', function () {
-    return view('detailevent');
-});
-
 Route::get('/user/detailkandidat', function () {
     return view('detailkandidat');
 });
@@ -42,8 +33,19 @@ Route::group(
         Route::get('/', 'HomePageController@index');
         // event
         Route::get('/event/{slug}', 'HomePageController@detailEvent');
+        Route::get('/daftar-kandidat/{slug}', 'HomePageController@listKandidat');
+        Route::get('/detail-kandidat/{slug}', 'HomePageController@detailKandidat');
+        
     }
 );
+
+// user login
+// Route::group(
+//     ['namespace' => 'user', 'middleware' => 'auth'],
+//     function () {
+//         // event
+//     }
+// );
 
 Auth::routes();
 
@@ -59,9 +61,11 @@ Route::group([
 
         // event
         Route::resource('/admin/event', 'EventController');
-
-         // kandidat
+        Route::get('admin/event/{id}/detail-event', 'EventController@detailEvent');
+        
+        // kandidat
         Route::resource('/admin/kandidat', 'KandidatController');
+        Route::get('admin/kandidat/{id}/detail-kandidat', 'KandidatController@detailKandidat');
     }
 );
 

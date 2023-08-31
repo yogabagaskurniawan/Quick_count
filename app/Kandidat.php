@@ -19,4 +19,9 @@ class Kandidat extends Model
     {
         return $this->belongsTo(Event::class);
     }
+
+    public function scopeActive($query)
+    {
+        return $query->where('status', 'aktif')->orderBy('created_at', 'DESC');
+    }
 }

@@ -9,7 +9,7 @@
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description">
         <meta content="Themesbrand" name="author">
         <!-- App favicon -->
-        <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
+        <link rel="shortcut icon" href="{{ asset('guests/img/uniss.png') }}">
     
         <link href="{{ asset('assets/libs/chartist/chartist.min.css') }}" rel="stylesheet">
     
@@ -34,21 +34,12 @@
                     <div class="d-flex">
                         <!-- LOGO -->
                         <div class="navbar-brand-box">
-                            <a href="/admin" class="logo logo-dark">
-                                <span class="logo-sm">
-                                    <img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="22">
-                                </span>
-                                <span class="logo-lg">
-                                    <img src="{{ asset('assets/images/logo-dark.png') }}" alt="" height="17">
-                                </span>
-                            </a>
-
                             <a href="/admin" class="logo logo-light">
                                 <span class="logo-sm">
-                                    <img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="22">
+                                    <img src="{{ asset('guests/img/uniss.png') }}" alt="" height="30">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="{{ asset('assets/images/logo-light.png') }}" alt="" height="18">
+                                    <img src="{{ asset('guests/img/uniss.png') }}" alt="" height="60">
                                 </span>
                             </a>
                         </div>
@@ -223,7 +214,7 @@
                             <li>
                                 <a href="/admin/kandidat" class=" waves-effect">
                                     <i class="fa fa-users" aria-hidden="true"></i>
-                                    <span>Add kandidat</span>
+                                    <span>Kandidat</span>
                                 </a>
                             </li>
 
@@ -403,7 +394,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-12">
-                                © <script>document.write(new Date().getFullYear())</script> Xxx<span class="d-none d-sm-inline-block"> - Crafted with <i class="mdi mdi-sleep text-black"></i> by 404 Not Found.</span>
+                                All rights reserved &copy; <script>document.write(new Date().getFullYear())</script> Universitas Selamat Sri
                             </div>
                         </div>
                     </div>

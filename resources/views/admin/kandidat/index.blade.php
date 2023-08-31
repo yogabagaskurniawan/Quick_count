@@ -64,7 +64,8 @@
                             <td><img src="{{ asset('storage/'.$kandidat->image) }}" style="width:150px"/></td>
                             <td>{{ $kandidat->status }}</td>
                             <td>
-                                <a href="{{ url('admin/kandidat/' . $kandidat->id . '/edit') }}" class="btn btn-warning btn-sm">Edit</a>                              
+                                <a href="{{ url('admin/kandidat/' . $kandidat->id . '/edit') }}" class="btn btn-warning btn-sm">Edit</a>     
+                                <a href="{{ url('admin/kandidat/' . $kandidat->id . '/detail-kandidat') }}" class="btn btn-success btn-sm">Detail</a>                          
                             </td>
                         </tr>
                         @endforeach

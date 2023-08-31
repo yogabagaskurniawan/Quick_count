@@ -44,8 +44,7 @@
 
 <body class="home-one-body">
     <main class="home overflow-x-hidden">
-        <!-- start header -->
-        <header class="bg-white header" >
+        <header class="position-absolute top-0 left-0 w-100 mt-25">
             <!-- mobile header nav -->
             <div class="mobile-menu d-block d-md-none">
                 <nav>
@@ -56,9 +55,9 @@
                     </ul>
                 </nav>
             </div>
-            <div class="container d-none d-md-block">
+            <div class="container d-none d-md-block position-relative z-1">
                 <div class="header-wrapper d-flex justify-content-between align-items-center">
-                    <div class="logo" style="height: 90px; max-width: 90px;">
+                    <div class="logo">
                         <a href="/">
                             <img src="{{asset('guests/img/uniss.png')}}" alt="logo">
                         </a>
@@ -97,7 +96,6 @@
                 </div>
             </div>
         </header>
-        <!-- end header -->
     </div>
 </div>
 </header>
@@ -114,7 +112,7 @@
                     <div class="row">
                         <div class="footerbottom-left col-12 col-sm-5 col-md-6 text-start">
                             <p class="p text-white line-height-7">
-                                All rights reserved &copy; 2023 Universitas Selamat Sri
+                                All rights reserved &copy; <script>document.write(new Date().getFullYear())</script> Universitas Selamat Sri
                             </p>
                         </div>
                     </div>
