@@ -36,7 +36,7 @@ class HomePageController extends Controller
         if ($currentDate->lessThan($tglMulai)) {
             return abort(404);
         }
-        return view('user.detailEvent', compact('event'));
+        return view('user.event.detailEvent', compact('event'));
     }
 
     // list kandidat
@@ -51,7 +51,7 @@ class HomePageController extends Controller
         $kandidat = $event->Kandidats()->active()->get();
         // dd($kandidat);    
 
-        return view('user.kandidat', compact('kandidat'));
+        return view('user.event.listKandidat', compact('kandidat'));
     }
 
     // detail kandidat
@@ -63,6 +63,6 @@ class HomePageController extends Controller
             return redirect('/');
         }
 
-        return view('user.detailKandidat', compact('kandidat'));
+        return view('user.event.detailKandidat', compact('kandidat'));
     }
 }

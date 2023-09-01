@@ -19,20 +19,20 @@ class VoteController extends Controller
         $validasiVote = UserVote::where('user_id', Auth::user()->id)->where('event_id', $kandidat->Event->id)->first();
 
         if ($validasiVote) {
-        return redirect()->back()->with('error', 'Anda telah memberikan voting sebelumnya.');
+            return response()->json(['success' => false, 'message' => 'Anda telah memberikan voting sebelumnya.']);
         }
 
         $vote = new Vote();
-        $vote->kandidat_id = $kandidat->id; 
-        $vote->event_id = $kandidat->Event->id; 
+        $vote->kandidat_id = $kandidat->id;
+        $vote->event_id = $kandidat->Event->id;
         $vote->save();
 
         $vote = new UserVote();
-        $vote->user_id = Auth::user()->id; 
-        $vote->event_id = $kandidat->Event->id; 
+        $vote->user_id = Auth::user()->id;
+        $vote->event_id = $kandidat->Event->id;
         $vote->save();
 
-        return redirect()->back()->with('success', 'Berhasil memilih kandidat.');
+        return response()->json(['success' => true, 'message' => 'Pilihan suara Anda berhasil disimpan!']);
     }
 
 }
