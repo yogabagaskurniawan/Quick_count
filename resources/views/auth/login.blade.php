@@ -9,14 +9,17 @@
 
                 <div class="card-body">
                     @if ($errors->any())
-                        <div class="alert alert-danger">
-                            @foreach ($errors->all() as $error)
-                                {{ $error }}
-                            @endforeach
-                        </div>
+                    <div class="alert alert-danger">
+                        @foreach ($errors->all() as $error)
+                        {{ $error }}
+                        @endforeach
+                    </div>
                     @endif
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
+                        @if(session('intended_route'))
+                            <input type="hidden" name="intended_route" value="{{ session('intended_route') }}">
+                        @endif
 
                         <div class="form-group row">
                             <label for="nim" class="col-md-4 col-form-label text-md-right">Nim</label>

@@ -18,6 +18,13 @@ class HomePageController extends Controller
         return view('user.index', compact('event'));
     }
 
+    public function event()
+    {
+        $events = Event::active()->latest()->paginate(9);
+        
+        return view('user.event.eventAll', compact('events'));
+    }
+
     // event
     public function detailEvent($slug)
     {
@@ -36,6 +43,9 @@ class HomePageController extends Controller
         if ($currentDate->lessThan($tglMulai)) {
             return abort(404);
         }
+
+        session(['intended_route' => 'event/'. $slug]);
+
         return view('user.event.detailEvent', compact('event'));
     }
 

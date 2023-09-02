@@ -40,6 +40,12 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
+        if ($request->input('intended_route')) {
+            // Jika ada intended_route dalam request, arahkan pengguna langsung ke rute tersebut
+            return redirect($request->input('intended_route'));
+        }
+        
+
         return redirect()->intended('admin');
     }
 

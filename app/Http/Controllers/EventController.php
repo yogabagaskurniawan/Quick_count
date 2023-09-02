@@ -111,7 +111,8 @@ class EventController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'deskripsi' => 'required',
             'status' => 'required|in:aktif,non-aktif,delete',
-            'tgl_mulai' => 'required|date|after_or_equal:today',
+            // 'tgl_mulai' => 'required|date|after_or_equal:today',
+            'tgl_mulai' => 'required|date',
         ]);
 
         if ($validator->fails()) {
