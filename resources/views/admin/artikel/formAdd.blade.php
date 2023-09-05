@@ -25,13 +25,6 @@
 
                     @csrf
                     @if($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
                     @endif
 
                     <div class="mb-3 col-md-4">
@@ -42,7 +35,19 @@
                         <p class="help-block text-danger">{{ $message }}</p>
                         @enderror
                     </div>
-
+                    
+                    <div class="mb-3 col-md-4">
+                        <label for="status">Select status</label>
+                        <select name="status" class="form-select" aria-label="Default select example">
+                            <option value="aktif">Aktif</option>
+                            <option value="non-aktif">Non Aktif</option>
+                            <option value="delete">Delete</option>
+                        </select>
+                        @error('status')
+                        <p class="help-block text-danger">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    
                     <div class="mb-3 col-md-8">
                         <label class="form-label" for="image">Image</label>
                         <input type="file" name="image" id="image"
@@ -56,17 +61,6 @@
                         </div>
                     </div>
 
-                    <div class="mb-3 col-md-4">
-                        <label for="status">Select status</label>
-                        <select name="status" class="form-select" aria-label="Default select example">
-                            <option value="aktif">Aktif</option>
-                            <option value="non-aktif">Non Aktif</option>
-                            <option value="delete">Delete</option>
-                        </select>
-                        @error('status')
-                        <p class="help-block text-danger">{{ $message }}</p>
-                        @enderror
-                    </div>
 
                     <div class="mb-3">
                         <label class="form-label">Deskripsi</label>

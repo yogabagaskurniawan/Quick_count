@@ -23,6 +23,9 @@
     <!-- Core CSS -->
     <link rel="stylesheet" href="{{asset ('guests/css/core.css')}}" />
 
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{ asset('guests/img/uniss.png') }}">
+
     <!-- Page CSS -->
     <!-- Page -->
     <link rel="stylesheet" href="{{asset ('guests/css/page-auth.css')}}" />

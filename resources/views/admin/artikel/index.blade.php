@@ -47,7 +47,7 @@
                         <th >No</th>
                         <th>Name</th>
                         <th>Image</th>
-                        <th>Desc</th>
+                        {{-- <th>Desc</th> --}}
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -60,12 +60,11 @@
                         <tr>
                             <td>{{ $no++ }}</td>
                             <td>{{ $artikel->name}}</td>
-                            <td><img src="{{ asset('storage/'.$artikel->img) }}" style="width:150px"/></td>
-                            <td>{{ $artikel->deskripsi}}</td>
+                            <td><img src="{{ asset('storage/'.$artikel->image) }}" style="width:150px"/></td>
                             <td>{{ $artikel->status }}</td>
                             <td>
                                 <a href="{{ url('admin/artikel/' . $artikel->id . '/edit') }}" class="btn btn-warning btn-sm">Edit</a>     
-                                {{-- <a href="{{ url('admin/kandidat/' . $artikel->id . '/detail-kandidat') }}" class="btn btn-success btn-sm">Detail</a>                           --}}
+                                <a href="{{ url('admin/artikel/' . $artikel->id . '/detail-artikel') }}" class="btn btn-success btn-sm">Detail</a>                          
                             </td>
                         </tr>
                         @endforeach

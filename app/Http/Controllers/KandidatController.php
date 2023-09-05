@@ -115,7 +115,7 @@ class KandidatController extends Controller
         
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:2|unique:kandidats,name,' . $id . ',id',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'deskripsi' => 'required',
             'status' => 'required|in:aktif,non-aktif,delete',
             'event_id' => [
@@ -150,6 +150,17 @@ class KandidatController extends Controller
             ]);
     
             return redirect('/admin/kandidat')->with('success','Data berhasil diupdate');
+        } else {
+            // Jika tidak ada gambar baru yang diunggah atau gambar tidak valid
+            $kandidat->update([
+                'name' => $request->name,
+                'slug' => Str::slug($request->name),
+                'deskripsi' => $request->deskripsi,
+                'event_id' => $request->input('event_id'),
+                'status' => $request->input('status'),
+            ]);
+    
+            return redirect('/admin/kandidat')->with('success', 'Data berhasil diupdate');
         }
     }
 

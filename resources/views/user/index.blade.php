@@ -155,111 +155,28 @@
                         </h2>
                     </div>
                     <div class="blogs-container row-mobile-margin mt-50">
-                        <div class="card p-0 hasil event-card">
-                            <div class="img-overlay">
-                                <img src="{{asset('guests/img/blogOne.png')}}" class="card-img-top img-fluid blog-card-img"
-                                    alt="blog image">
-                            </div>
-                            <div class="card-body blog-card-body">
-                                <p class="p font-urbanist line-height-7 blog-card-date fw-400 mb-20">20 January,
-                                    2023
-                                </p>
-                                <a href="/user/detailevent">
-                                    <h3 class="card-title h3 fw-600 line-height-3 black-color">EVENT 1.</h3>
-                                </a>
-                                <a href="/user/detailevent">
-                                    <div class="blog-card-btn d-flex align-items-center mt-4">
-                                        <span
-                                            class="blog-card-btn-text mr-10 .font-urbanist fw-600 line-height-7 orange-color">masuk</span>
+                        @forelse ($artikel as $artikel)
+                            <div class="card p-0 blog-card">
+                                <div class="img-overlay">
+                                    <img src="{{ asset('storage/'.$artikel->image) }}" class="card-img-top img-fluid blog-card-img"
+                                        alt="blog image">
+                                </div>
+                                <div class="card-body blog-card-body">
+                                    <p class="p font-urbanist line-height-7 blog-card-date fw-400 mb-20">
+                                        {{ \Carbon\Carbon::parse($artikel->created_at)->format('d F, Y H:i:s') }}
+                                    </p>                                    
+                                    <h3 class="card-title h3 fw-600 line-height-3 black-color">{{ $artikel->name }}</h3>
+                                    <a href="/artikel/{{ $artikel->slug }}" class="blog-card-btn d-flex align-items-center mt-4">
+                                        <span class="blog-card-btn-text mr-10 .font-urbanist fw-600 line-height-7 orange-color">Lihat</span>
                                         <i class="fa-solid fa-arrow-right"></i>
-                                    </div>
-                                </a>
+                                    </a> 
+                                </div>
                             </div>
+                        @empty
+                        <div class="col-lg-4 mr-3">
+                            <p style="margin-left: 20px">Belum ada artikel terbaru!</p>
                         </div>
-                        <div class="card p-0 blog-card">
-                            <div class="img-overlay">
-                                <img src="{{asset('guests/img/blogOne.png')}}" class="card-img-top img-fluid blog-card-img"
-                                    alt="blog image">
-                            </div>
-                            <div class="card-body blog-card-body">
-                                <p class="p font-urbanist line-height-7 blog-card-date fw-400 mb-20">20 January,
-                                    2023
-                                </p>
-                                <a href="/user/detailevent">
-                                    <h3 class="card-title h3 fw-600 line-height-3 black-color">EVENT 1.</h3>
-                                </a>
-                                <a href="/user/detailevent">
-                                    <div class="blog-card-btn d-flex align-items-center mt-4">
-                                        <span
-                                            class="blog-card-btn-text mr-10 .font-urbanist fw-600 line-height-7 orange-color">masuk</span>
-                                        <i class="fa-solid fa-arrow-right"></i>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card p-0 blog-card">
-                            <div class="img-overlay">
-                                <img src="{{asset('guests/img/blogOne.png')}}" class="card-img-top img-fluid blog-card-img"
-                                    alt="blog image">
-                            </div>
-                            <div class="card-body blog-card-body">
-                                <p class="p font-urbanist line-height-7 blog-card-date fw-400 mb-20">20 January,
-                                    2023
-                                </p>
-                                <a href="/user/detailevent">
-                                    <h3 class="card-title h3 fw-600 line-height-3 black-color">EVENT 1.</h3>
-                                </a>
-                                <a href="/user/detailevent">
-                                    <div class="blog-card-btn d-flex align-items-center mt-4">
-                                        <span
-                                            class="blog-card-btn-text mr-10 .font-urbanist fw-600 line-height-7 orange-color">masuk</span>
-                                        <i class="fa-solid fa-arrow-right"></i>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card p-0 blog-card">
-                            <div class="img-overlay">
-                                <img src="{{asset('guests/img/blogTwo.png')}}" class="card-img-top img-fluid blog-card-img"
-                                    alt="blog image">
-                            </div>
-                            <div class="card-body blog-card-body">
-                                <p class="p font-urbanist line-height-7 blog-card-date fw-400 mb-20">15 January,
-                                    2023
-                                </p>
-                                <a href="/user/detailevent">
-                                    <h3 class="card-title h3 fw-600 line-height-3 black-color">EVENT 2.</h3>
-                                </a>
-                                <a href="/user/detailevent">
-                                    <div class="blog-card-btn d-flex align-items-center mt-4">
-                                        <span
-                                            class="blog-card-btn-text mr-10 .font-urbanist fw-600 line-height-7 orange-color">Masuk</span>
-                                        <i class="fa-solid fa-arrow-right"></i>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card p-0 blog-card">
-                            <div class="img-overlay">
-                                <img src="{{asset('guests/img/blogThree.png')}}" class="card-img-top img-fluid blog-card-img"
-                                    alt="blog image">
-                            </div>
-                            <div class="card-body blog-card-body">
-                                <p class="p font-urbanist line-height-7 blog-card-date fw-400 mb-20">08 January,
-                                    2023
-                                </p>
-                                <a href="/user/detailevent">
-                                    <h3 class="card-title h3 fw-600 line-height-3 black-color">EVENT 3.</h3>
-                                </a>
-                                <a href="/user/detailevent">
-                                    <div class="blog-card-btn d-flex align-items-center mt-4">
-                                        <span
-                                            class="blog-card-btn-text mr-10 .font-urbanist fw-600 line-height-7 orange-color">Masuk</span>
-                                        <i class="fa-solid fa-arrow-right"></i>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                        @endforelse
                     </div>
                 </div>
             </div>

@@ -224,9 +224,12 @@
                                     <span>Kandidat</span>
                                 </a>
                             </li>
+
+                            <li class="menu-title">Sosial</li>
+                            
                             <li>
                                 <a href="/admin/artikel" class=" waves-effect">
-                                    <i class="fa fa-users" aria-hidden="true"></i>
+                                    <i class="fas fa-receipt" aria-hidden="true"></i>
                                     <span>Artikel</span>
                                 </a>
                             </li>

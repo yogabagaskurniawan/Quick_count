@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Artikel;
 use App\Event;
 use App\Kandidat;
 use App\UserVote;
@@ -15,7 +16,8 @@ class HomePageController extends Controller
     {
         $event = Event::active()->latest()->take(6)->get();
         $history = Event::getEventNonAktif()->take(6)->get();
-        return view('user.index', compact('event', 'history'));
+        $artikel = Artikel::active()->latest()->take(3)->get();
+        return view('user.index', compact('event', 'history', 'artikel'));
     }
 
     // ========= Event ============
@@ -84,7 +86,7 @@ class HomePageController extends Controller
         
         return view('user.history.hasilVoteAll', compact('histories'));
     }
-
+    
     public function detailHasilVote($slug)
     {
         $history = Event::getEventNonAktif()->where('slug', $slug)->first();
@@ -95,5 +97,24 @@ class HomePageController extends Controller
         }
 
         return view('user.history.detailHasilVote', compact('history', 'totalVotes'));
+    }
+
+    // ========= Artikel ============
+    public function artikel()
+    {
+        $artikels = Artikel::active()->paginate(9);
+        
+        return view('user.artikel.artikelAll', compact('artikels'));
+    }
+
+    public function detailArtikel($slug)
+    {
+        $artikel = Artikel::active()->where('slug', $slug)->first();
+
+        if (!$artikel) {
+            return redirect('/');
+        }
+
+        return view('user.artikel.detailArtikel', compact('artikel'));
     }
 }

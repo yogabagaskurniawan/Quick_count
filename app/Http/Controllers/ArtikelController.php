@@ -44,6 +44,7 @@ class ArtikelController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:2|unique:artikel',
             'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'status' => 'required|in:aktif,non-aktif,delete',
             'deskripsi' => 'required',
             'status' => 'required|in:aktif,non-aktif,delete'
         ]);
@@ -137,7 +138,7 @@ class ArtikelController extends Controller
                 'slug' => Str::slug($request->name),
             ]);
     
-            return redirect('/admin/artikel')->with('success', 'Data berhasil diupdate dengan gambar baru');
+            return redirect('/admin/artikel')->with('success', 'Data berhasil diupdate');
         } else {
             // Jika tidak ada gambar baru yang diunggah atau gambar tidak valid
             $artikel->update([
@@ -147,7 +148,7 @@ class ArtikelController extends Controller
                 'slug' => Str::slug($request->name),
             ]);
     
-            return redirect('/admin/artikel')->with('success', 'Data berhasil diupdate (tanpa perubahan gambar)');
+            return redirect('/admin/artikel')->with('success', 'Data berhasil diupdate');
         }
     }
     
@@ -161,5 +162,11 @@ class ArtikelController extends Controller
     public function destroy(Artikel $artikel)
     {
         //
+    }
+
+    public function detailArtikel($id)
+    {
+        $artikel = Artikel::findOrFail($id);
+        return view('admin.artikel.detailArtikel', compact('artikel'));
     }
 }

@@ -20,16 +20,10 @@ class Event extends Model
         return $query->where('status', 'aktif')->orderBy('created_at', 'DESC');
     }
 
-    // public static function getEventNonAktif()
-    // {
-    //     return self::where('status', 'non-aktif')->orderBy('created_at', 'DESC')->get();
-    // }    
-
     public static function getEventNonAktif()
     {
         return self::where('status', 'non-aktif')->orderBy('created_at', 'DESC');
     }
-
 
     public function Kandidats()
     {

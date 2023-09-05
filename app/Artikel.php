@@ -14,4 +14,9 @@ class Artikel extends Model
         'deskripsi',
         'status'
     ];
+
+    public function scopeActive($query)
+    {
+        return $query->where('status', 'aktif')->orderBy('created_at', 'DESC');
+    }
 }

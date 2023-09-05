@@ -37,6 +37,10 @@ Route::group(
         // history
         Route::get('/hasil-vote', 'HomePageController@hasilVote');
         Route::get('/hasil-vote/{slug}', 'HomePageController@detailHasilVote');
+        
+        // history
+        Route::get('/artikel', 'HomePageController@artikel');
+        Route::get('/artikel/{slug}', 'HomePageController@detailArtikel');
     }
 );
 
@@ -68,6 +72,7 @@ Route::group([
 
         //artikel
         Route::resource('/admin/artikel', 'ArtikelController');
+        Route::get('admin/artikel/{id}/detail-artikel', 'ArtikelController@detailArtikel');
     }
 );
 
