@@ -67,6 +67,9 @@ Route::group([
         // kandidat
         Route::resource('/admin/kandidat', 'KandidatController');
         Route::get('admin/kandidat/{id}/detail-kandidat', 'KandidatController@detailKandidat');
+
+        //artikel
+        Route::resource('/admin/artikel', 'ArtikelController');
     }
 );
 

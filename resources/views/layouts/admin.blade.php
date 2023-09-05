@@ -217,6 +217,12 @@
                                     <span>Kandidat</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="/admin/artikel" class=" waves-effect">
+                                    <i class="fa fa-users" aria-hidden="true"></i>
+                                    <span>Artikel</span>
+                                </a>
+                            </li>
 
                             <li class="menu-title">Result</li>
 
