@@ -3,21 +3,22 @@
 namespace App\Http\Controllers\User;
 
 use App\Event;
-use App\Http\Controllers\Controller;
 use App\Kandidat;
+use App\UserVote;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class HomePageController extends Controller
 {
     public function index()
     {
-        $eventQuery = Event::active();
-        $event = $eventQuery->latest()->take(6)->get();
-        // dd($event);
-        return view('user.index', compact('event'));
+        $event = Event::active()->latest()->take(6)->get();
+        $history = Event::getEventNonAktif()->take(6)->get();
+        return view('user.index', compact('event', 'history'));
     }
 
+    // ========= Event ============
     public function event()
     {
         $events = Event::active()->latest()->paginate(9);
@@ -25,7 +26,6 @@ class HomePageController extends Controller
         return view('user.event.eventAll', compact('events'));
     }
 
-    // event
     public function detailEvent($slug)
     {
         $event = Event::active()->where('slug', $slug)->first();
@@ -74,5 +74,26 @@ class HomePageController extends Controller
         }
 
         return view('user.event.detailKandidat', compact('kandidat'));
+    }
+
+    // ========= History Event ============
+
+    public function hasilVote()
+    {
+        $histories = Event::getEventNonAktif()->paginate(9);
+        
+        return view('user.history.hasilVoteAll', compact('histories'));
+    }
+
+    public function detailHasilVote($slug)
+    {
+        $history = Event::getEventNonAktif()->where('slug', $slug)->first();
+        $totalVotes = UserVote::where('event_id', $history->id)->count();
+
+        if (!$history) {
+            return redirect('/');
+        }
+
+        return view('user.history.detailHasilVote', compact('history', 'totalVotes'));
     }
 }

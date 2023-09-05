@@ -73,7 +73,10 @@
                                     <a class="menu-link" href="/event">Event</a>
                                 </li>
                                 <li class="px-3">
-                                    <a class="menu-link" href="/hasil-event">Hasil Event</a>
+                                    <a class="menu-link" href="/hasil-vote">Hasil Event</a>
+                                </li>
+                                <li class="px-3">
+                                    <a class="menu-link" href="/artikel">Artikel</a>
                                 </li>
                             </ul>
                         </nav>

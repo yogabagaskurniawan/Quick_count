@@ -14,7 +14,7 @@ class VoteController extends Controller
 {
     public function store($slug)
     {
-        $kandidat = Kandidat::active()->where('slug', $slug)->first();
+        $kandidat = Kandidat::active()->where('slug', $slug)->firstOrFail();
 
         $validasiVote = UserVote::where('user_id', Auth::user()->id)->where('event_id', $kandidat->Event->id)->first();
 

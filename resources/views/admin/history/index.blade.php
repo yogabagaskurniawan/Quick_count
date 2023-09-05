@@ -15,10 +15,10 @@
 <div class="page-title-box">
     <div class="row align-items-center">
         <div class="col-md-8">
-            <h6 class="page-title">Kandidat</h6>
+            <h6 class="page-title">History</h6>
             <ol class="breadcrumb m-0">
                 <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Kandidat</li>
+                <li class="breadcrumb-item active" aria-current="page">History</li>
             </ol>
         </div>
     </div>
@@ -45,9 +45,9 @@
                     <thead>
                     <tr>
                         <th >No</th>
-                        <th >Event Kategori</th>
                         <th>Name</th>
                         <th>Image</th>
+                        <th>Tanggal Mulai</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -56,25 +56,22 @@
                         @php
                         $no = 1
                         @endphp
-                        @foreach ($kandidat as $kandidat)
+                        @foreach ($history as $history)
                         <tr>
                             <td>{{ $no++ }}</td>
-                            <td>{{ $kandidat->Event->name}}</td>
-                            <td>{{ $kandidat->name }}</td>
-                            <td><img src="{{ asset('storage/'.$kandidat->image) }}" style="width:150px"/></td>
-                            <td>{{ $kandidat->status }}</td>
+                            <td>{{ $history->name }}</td>
+                            <td><img src="{{ asset('storage/'.$history->image) }}" style="width:150px"/></td>
+                            <td>{{ $history->tgl_mulai }}</td>
+                            <td>{{ $history->status }}</td>
                             <td>
-                                <a href="{{ url('admin/kandidat/' . $kandidat->id . '/edit') }}" class="btn btn-warning btn-sm">Edit</a>     
-                                <a href="{{ url('admin/kandidat/' . $kandidat->id . '/detail-kandidat') }}" class="btn btn-success btn-sm">Detail</a>                          
+                                <a href="{{ url('admin/history/' . $history->id . '/detail-history') }}" class="btn btn-success btn-sm">Detail</a>                              
+                                <a href="{{ url('admin/history/' . $history->id . '/hasil-voting') }}" class="btn btn-primary btn-sm">Hasil Voting</a>                              
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
 
-            </div>
-            <div class="card-footer"> 
-                <a href="{{ url('admin/kandidat/create') }}" class="btn btn-info">Add new</a>
             </div>
         </div>
     </div> <!-- end col -->
@@ -101,4 +98,3 @@
     <!-- Datatable init js -->
     <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script> 
 @endsection
-

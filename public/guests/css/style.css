@@ -1954,7 +1954,7 @@ header {
 
 .resume-four {
     background-color: #fff3ea;
-    padding: 130px 0px;
+    padding: 20px 0px 130px 0;
 }
 
 .resume-four-skill-grid {
@@ -2022,10 +2022,10 @@ header {
     width: 88px;
     height: 88px;
     border-radius: 50%;
-    border: 1px solid var(--orange-color);
+    border: none;
     display: flex;
-    justify-content: center;
     align-items: center;
+    margin-bottom: 10px;
 }
 
 .resume-tab-item {
@@ -2056,8 +2056,8 @@ header {
 }
 
 .bio-img {
-    width: 75px;
-    height: 75px;
+    width: 110px;
+    height: 100px;
     margin-right: 25px;
 }
 

@@ -195,6 +195,13 @@
                     <div id="sidebar-menu">
                         <!-- Left Menu Start -->
                         <ul class="metismenu list-unstyled" id="side-menu">
+                            <li class="">
+                                <a href="/" class="waves-effect">
+                                    <i class="fas fa-arrow-left" aria-hidden="true"></i>
+                                    <span>Ke Tampilan Utama</span>
+                                </a>
+                            </li>
+
                             <li class="menu-title">Menu</li>
 
                             <li>
@@ -221,16 +228,9 @@
                             <li class="menu-title">Result</li>
 
                             <li>
-                                <a href="calendar.html" class=" waves-effect">
+                                <a href="/admin/history" class=" waves-effect">
                                     <i class="fa fa-history" aria-hidden="true"></i>
                                     <span>Histori event</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="calendar.html" class=" waves-effect">
-                                    <i class="fa fa-users" aria-hidden="true"></i>
-                                    <span>Kandidat</span>
                                 </a>
                             </li>
 
