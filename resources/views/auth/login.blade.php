@@ -54,6 +54,13 @@
                         <h4 class="mb-2 fw-semibold">{{__('Login') }}</h4>
                         <p class="mb-4">Please sign-in to your account </p>
 
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
+                        @if(session('intended_route'))
+                            <input type="hidden" name="intended_route" value="{{ session('intended_route') }}">
+                        @endif
+
+
                         <form id="formAuthentication" class="mb-3" action="{{ route('login')}}" method="POST">
                             @csrf
                             <div class="form-floating form-floating-outline mb-3">

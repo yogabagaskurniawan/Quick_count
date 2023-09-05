@@ -74,7 +74,6 @@
                         </div>
                     </div>
                 </form>
-                <!-- end form -->
             </div>
         </div>
     </div> 

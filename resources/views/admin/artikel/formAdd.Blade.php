@@ -88,7 +88,7 @@
             </div><!-- end cardbody -->
         </div><!-- end card -->
     </div> <!-- end col -->
-</div> <!-- end row -->
+</div>
 @endsection
 
 @section('script')

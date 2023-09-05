@@ -32,21 +32,14 @@ Route::group(
     function () {
         Route::get('/', 'HomePageController@index');
         // event
+        Route::get('/event', 'HomePageController@event');
         Route::get('/event/{slug}', 'HomePageController@detailEvent');
-        Route::get('/daftar-kandidat/{slug}', 'HomePageController@listKandidat');
-        Route::get('/detail-kandidat/{slug}', 'HomePageController@detailKandidat');
-        
-        Route::post('/kandidat/pilih/{slug}', 'VoteController@store');
+        Route::get('/daftar-kandidat/{slug}', 'HomePageController@listKandidat')->middleware('auth');
+        Route::get('/detail-kandidat/{slug}', 'HomePageController@detailKandidat')->middleware('auth');
+        Route::post('/kandidat/pilih/{slug}', 'VoteController@store')->middleware('auth');
     }
 );
 
-// user login
-// Route::group(
-//     ['namespace' => 'user', 'middleware' => 'auth'],
-//     function () {
-//         // event
-//     }
-// );
 
 Auth::routes();
 
