@@ -126,12 +126,12 @@ a:hover {
     color: var(--orange-color);
 }
 
-a > h2,
-a > h3,
-a > h4,
-a > h5,
-a > h6,
-a > p,
+a>h2,
+a>h3,
+a>h4,
+a>h5,
+a>h6,
+a>p,
 a span {
     transition: all 0.3s;
 }
@@ -376,9 +376,11 @@ textarea {
     0% {
         transform: translateY(-10px);
     }
+
     50% {
         transform: translateY(10px);
     }
+
     100% {
         transform: translateY(-10px);
     }
@@ -392,12 +394,15 @@ textarea {
     0% {
         background-position: top;
     }
+
     25% {
         background-position: right;
     }
+
     50% {
         background-position: bottom;
     }
+
     75% {
         background-position: left;
     }
@@ -407,6 +412,7 @@ textarea {
     0% {
         opacity: 1;
     }
+
     50% {
         opacity: 0;
     }
@@ -423,6 +429,7 @@ textarea {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
@@ -439,6 +446,7 @@ textarea {
     0% {
         transform: scale(1);
     }
+
     50% {
         transform: scale(0.9);
     }
@@ -455,6 +463,7 @@ textarea {
     0% {
         background-size: 0% 0%;
     }
+
     50% {
         background-size: 135% 100%;
     }
@@ -471,6 +480,7 @@ textarea {
     0% {
         opacity: 1;
     }
+
     100% {
         opacity: 0;
     }
@@ -487,9 +497,11 @@ textarea {
     0% {
         transform: translate3d(0px, 0px, 0px);
     }
+
     50% {
         transform: translate3d(-30px, -30px, -30px);
     }
+
     100% {
         transform: translate3d(0px, 0px, 0px);
     }
@@ -1294,7 +1306,7 @@ header {
     width: max-content;
 }
 
-.header-menu li:hover > ul {
+.header-menu li:hover>ul {
     opacity: 1;
     visibility: visible;
 }
@@ -1417,11 +1429,9 @@ header {
 /* 3. Home Banner css */
 
 .home-banner {
-    background: linear-gradient(
-        256.24deg,
-        rgba(255, 195, 152, 0.2) 26.56%,
-        rgba(255, 234, 190, 0.3) 100%
-    );
+    background: linear-gradient(256.24deg,
+            rgba(255, 195, 152, 0.2) 26.56%,
+            rgba(255, 234, 190, 0.3) 100%);
 }
 
 .home-two-banner {
@@ -1730,7 +1740,7 @@ header {
     padding: 130px 0px 65px 0px;
 }
 
-.service-three .owl-theme .owl-nav.disabled + .owl-dots {
+.service-three .owl-theme .owl-nav.disabled+.owl-dots {
     margin-top: 55px;
 }
 
@@ -2022,7 +2032,11 @@ header {
     width: 88px;
     height: 88px;
     border-radius: 50%;
+<<<<<<< HEAD
     border: none;
+=======
+    /* border: 1px solid var(--orange-color); */
+>>>>>>> 8a180ac23e0ae060e278475d5c93b3f417a9ba32
     display: flex;
     align-items: center;
     margin-bottom: 10px;
@@ -2081,7 +2095,7 @@ header {
     background-color: #fff;
 }
 
-.testimonial .owl-theme .owl-nav.disabled + .owl-dots {
+.testimonial .owl-theme .owl-nav.disabled+.owl-dots {
     margin-top: 25px;
 }
 
@@ -2116,7 +2130,7 @@ header {
     padding: 0px 130px 0px 130px;
 }
 
-.testimonial-four .owl-theme .owl-nav.disabled + .owl-dots {
+.testimonial-four .owl-theme .owl-nav.disabled+.owl-dots {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -2202,7 +2216,7 @@ header {
     transition: all 0.4s;
 }
 
-.partners .owl-theme .owl-nav.disabled + .owl-dots {
+.partners .owl-theme .owl-nav.disabled+.owl-dots {
     margin-top: 50px;
 }
 
@@ -2254,7 +2268,7 @@ header {
     padding: 130px 0px 65px 0px;
 }
 
-.partners-four .owl-theme .owl-nav.disabled + .owl-dots {
+.partners-four .owl-theme .owl-nav.disabled+.owl-dots {
     margin-top: 57px;
 }
 
@@ -2278,11 +2292,9 @@ header {
 
 .partner-logo-card-two {
     padding: 25px 70px;
-    background: linear-gradient(
-        90deg,
-        rgba(255, 65, 108, 0.1) 0%,
-        rgba(255, 75, 43, 0.1) 100%
-    );
+    background: linear-gradient(90deg,
+            rgba(255, 65, 108, 0.1) 0%,
+            rgba(255, 75, 43, 0.1) 100%);
     border-radius: 5px;
     overflow: hidden;
 }
@@ -3260,11 +3272,13 @@ header {
 }
 
 @-webkit-keyframes ballPulseDouble {
+
     0%,
     100% {
         -webkit-transform: scale(0);
         transform: scale(0);
     }
+
     50% {
         -webkit-transform: scale(1);
         transform: scale(1);
@@ -3272,11 +3286,13 @@ header {
 }
 
 @keyframes ballPulseDouble {
+
     0%,
     100% {
         -webkit-transform: scale(0);
         transform: scale(0);
     }
+
     50% {
         -webkit-transform: scale(1);
         transform: scale(1);

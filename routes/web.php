@@ -65,6 +65,9 @@ Route::group([
         Route::get('/admin/history', 'HistoryController@index');
         Route::get('admin/history/{id}/detail-history', 'HistoryController@detailHistory');
         Route::get('admin/history/{id}/hasil-voting', 'HistoryController@hasilVoting');
+
+        //artikel
+        Route::resource('/admin/artikel', 'ArtikelController');
     }
 );
 
