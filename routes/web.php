@@ -44,6 +44,9 @@ Route::group(
     }
 );
 
+Auth::routes([
+    'register' => false,
+]);
 
 Auth::routes();
 
