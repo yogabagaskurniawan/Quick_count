@@ -30,6 +30,7 @@ Route::group(
         // event
         Route::get('/event', 'HomePageController@event');
         Route::get('/event/{slug}', 'HomePageController@detailEvent');
+        Route::get('/live-vote/{slug}', 'HomePageController@liveVote')->middleware('auth');
         Route::get('/daftar-kandidat/{slug}', 'HomePageController@listKandidat')->middleware('auth');
         Route::get('/detail-kandidat/{slug}', 'HomePageController@detailKandidat')->middleware('auth');
         Route::post('/kandidat/pilih/{slug}', 'VoteController@store')->middleware('auth');

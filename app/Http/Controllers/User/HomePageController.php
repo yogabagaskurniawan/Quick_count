@@ -46,22 +46,46 @@ class HomePageController extends Controller
             return abort(404);
         }
 
+        // session ketika belum login
         session(['intended_route' => 'event/'. $slug]);
 
         return view('user.event.detailEvent', compact('event'));
     }
 
+    // list Live Vote
+    public function liveVote($slug)
+    {
+        $event = Event::active()->where('slug', $slug)->first();
+        if (!$event) {
+            return redirect('/');
+        }
+        $totalVotes = UserVote::where('event_id', $event->id)->count();
+        $kandidat = $event->Kandidats()->active()->get();
+
+        $tglMulai = Carbon::parse($event->tgl_mulai);
+        $currentDate = Carbon::now();
+        // jika waktu event belum mulai
+        if ($currentDate->lessThan($tglMulai)) {
+            return abort(404);
+        }
+        return view('user.history.detailHasilVote', compact('event', 'totalVotes'));
+    }
     // list kandidat
     public function listKandidat($slug)
     {
         $event = Event::active()->where('slug', $slug)->first();
-
         if (!$event) {
             return redirect('/');
         }
 
         $kandidat = $event->Kandidats()->active()->get();
-        // dd($kandidat);    
+
+        $tglMulai = Carbon::parse($event->tgl_mulai);
+        $currentDate = Carbon::now();
+        // jika waktu event belum mulai
+        if ($currentDate->lessThan($tglMulai)) {
+            return abort(404);
+        }
 
         return view('user.event.listKandidat', compact('kandidat'));
     }
@@ -73,6 +97,13 @@ class HomePageController extends Controller
 
         if (!$kandidat) {
             return redirect('/');
+        }
+
+        $tglMulai = Carbon::parse($kandidat->Event->tgl_mulai);
+        $currentDate = Carbon::now();
+        // jika waktu event belum mulai
+        if ($currentDate->lessThan($tglMulai)) {
+            return abort(404);
         }
 
         return view('user.event.detailKandidat', compact('kandidat'));
@@ -89,14 +120,18 @@ class HomePageController extends Controller
     
     public function detailHasilVote($slug)
     {
-        $history = Event::getEventNonAktif()->where('slug', $slug)->first();
-        $totalVotes = UserVote::where('event_id', $history->id)->count();
+        $event = Event::getEventNonAktif()->where('slug', $slug)->first();
+        if (!$event) {
+            return redirect('/');
+        }
+        
+        $totalVotes = UserVote::where('event_id', $event->id)->count();
 
-        if (!$history) {
+        if (!$totalVotes) {
             return redirect('/');
         }
 
-        return view('user.history.detailHasilVote', compact('history', 'totalVotes'));
+        return view('user.history.detailHasilVote', compact('event', 'totalVotes'));
     }
 
     // ========= Artikel ============

@@ -31,8 +31,11 @@
                         <div>{!! $event->deskripsi !!}</div>
                     </div>
                         <div class="col-12 mt-5">
-                            <a class="btn orange-btn btn_effect voting-btn" href="/daftar-kandidat/{{ $event->slug }}">
+                            <a class="btn orange-btn btn_effect voting-btn mt-2" href="/daftar-kandidat/{{ $event->slug }}">
                                 <span class="z-1 position-relative">Yuk Voting Sekarang <i class="bi bi-box-arrow-in-right"></i></span>
+                            </a>
+                            <a class="btn orange-btn btn_effect voting-btn mt-2" href="/live-vote/{{ $event->slug }}">
+                                <span class="z-1 position-relative">Live Vote <i class="bi bi-box-arrow-in-right"></i></span>
                             </a>
                         </div>
                 </div>

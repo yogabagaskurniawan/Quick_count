@@ -7,6 +7,7 @@ use App\Kandidat;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\UserVote;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,13 @@ class VoteController extends Controller
         $vote->user_id = Auth::user()->id;
         $vote->event_id = $kandidat->Event->id;
         $vote->save();
+
+        $tglMulai = Carbon::parse($kandidat->Event->tgl_mulai);
+        $currentDate = Carbon::now();
+        // jika waktu event belum mulai
+        if ($currentDate->lessThan($tglMulai)) {
+            return abort(404);
+        }
 
         return response()->json(['success' => true, 'message' => 'Pilihan suara Anda berhasil disimpan!']);
     }

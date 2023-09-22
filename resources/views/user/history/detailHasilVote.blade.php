@@ -11,7 +11,7 @@
                         <span class="secondary-black">Hasil Event</span>
                     </p>
                     <h2 class="h2 black-color fw-700 line-height-3 text-center">
-                        {{ $history->name }}
+                        {{ $event->name }}
                     </h2>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                     </div>
                     <div class="tab-content">
                         <div id="experience" class="resume-tab-contents tab-pane fade show active">
-                            @foreach ($history->Kandidats as $kandidat)
+                            @foreach ($event->Kandidats as $kandidat)
                                 <div class="resume-tab-item bg-white pt-30 pb-30 pl-30 pr-30 row align-items-center mb-30">
                                     <div class="col-12 col-lg-2">
                                         <div class="resume-tab-img-container mx-auto mx-lg-0">
@@ -80,7 +80,7 @@
                             @endforeach
                         </div>
                         <div id="education" class="resume-tab-contents tab-pane fade">
-                            @foreach ($history->Kandidats as $kandidat)
+                            @foreach ($event->Kandidats as $kandidat)
                                 <div class="resume-tab-item bg-white pt-30 pb-30 pl-30 pr-30 row align-items-center mb-30">
                                     <div class="col-12 col-lg-2">
                                         <div class="resume-tab-img-container mx-auto mx-lg-0">
