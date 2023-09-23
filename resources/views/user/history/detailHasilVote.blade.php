@@ -35,9 +35,9 @@
                                 <h2 class="black-color line-height-3 h2">
                                     Kandidat Vote
                                 </h2>
-                                <h4 class="black-color line-height-3 h4 mt-3">
-                                    Total Voting Keseluruhan: {{ $totalVotes }} Votes
-                                </h4>
+                                <h4 id="vote-count" class="black-color line-height-3 h4 mt-3">
+                                    Total Voting Keseluruhan: <span id="total-votes-value">{{ $totalVotes }}</span> Votes
+                                </h4>                                 
                             </div>
                             <div class="resume-four-skill-grid mt-50 row-mobile-margin">
                             </div>
@@ -73,7 +73,7 @@
                                     </div>
                                     <div class="col-12 col-lg-5 text-center text-lg-end mt-3 mt-lg-0">
                                         <h4 class="resume-tab-time orange-color fw-600 line-height-5 mb-10">
-                                            {{ $kandidat->vote()->count() }} Votes
+                                            <span id="total-votes-kandidat-{{ $kandidat->slug }}">{{ $totalVotesKandidat[$kandidat->id] }}</span>  Votes
                                         </h4>
                                     </div>
                                 </div>
@@ -107,4 +107,29 @@
 </section>
 <!-- end resume -->
 
+@endsection
+
+@section('script')
+<script>
+    var eventSlug = "{{ $event->slug }}"; // Ambil slug dari sumber data
+    var eventSource = new EventSource('/update-vote-count/' + eventSlug);
+
+    eventSource.onmessage = function(event) {
+        var data = JSON.parse(event.data);
+
+        // Menggunakan data.totalVotes sesuai kebutuhan
+        document.getElementById('total-votes-value').textContent = data.totalVotes;
+
+        // Iterasi melalui data.totalVotesKandidat
+        for (var slug in data.totalVotesKandidat) {
+            if (data.totalVotesKandidat.hasOwnProperty(slug)) {
+                var votesForKandidat = data.totalVotesKandidat[slug];
+                // Mengidentifikasi elemen dengan slug dan memperbarui kontennya
+                var elementId = "total-votes-kandidat-" + slug;
+                document.getElementById(elementId).textContent = votesForKandidat;
+            }
+        }
+    };
+
+</script>
 @endsection

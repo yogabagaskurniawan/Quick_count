@@ -27,6 +27,6 @@ class Kandidat extends Model
     
     public function vote()
     {
-        return $this->hasOne('App\Vote', 'kandidat_id', 'id');
+        return $this->hasMany('App\Vote', 'kandidat_id', 'id');
     }
 }

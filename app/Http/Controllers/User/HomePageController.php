@@ -52,24 +52,6 @@ class HomePageController extends Controller
         return view('user.event.detailEvent', compact('event'));
     }
 
-    // list Live Vote
-    public function liveVote($slug)
-    {
-        $event = Event::active()->where('slug', $slug)->first();
-        if (!$event) {
-            return redirect('/');
-        }
-        $totalVotes = UserVote::where('event_id', $event->id)->count();
-        $kandidat = $event->Kandidats()->active()->get();
-
-        $tglMulai = Carbon::parse($event->tgl_mulai);
-        $currentDate = Carbon::now();
-        // jika waktu event belum mulai
-        if ($currentDate->lessThan($tglMulai)) {
-            return abort(404);
-        }
-        return view('user.history.detailHasilVote', compact('event', 'totalVotes'));
-    }
     // list kandidat
     public function listKandidat($slug)
     {
@@ -131,7 +113,13 @@ class HomePageController extends Controller
             return redirect('/');
         }
 
-        return view('user.history.detailHasilVote', compact('event', 'totalVotes'));
+        // hitung total kandidat
+        $totalVotesKandidat = [];
+        foreach ($event->Kandidats as $kandidat) {
+            $totalVotesKandidat[$kandidat->id] = $kandidat->vote()->count();
+        }
+
+        return view('user.history.detailHasilVote', compact('event', 'totalVotes', 'totalVotesKandidat'));
     }
 
     // ========= Artikel ============

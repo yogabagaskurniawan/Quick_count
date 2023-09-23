@@ -14,14 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/hasil-event', function () {
-//     return view('umum.resultEvent');
-// });
-
-Route::get('/hasil-vote', function () {
-    return view('umum.resultVote');
-});
-
 // user
 Route::group(
     ['namespace' => 'user'],
@@ -30,7 +22,6 @@ Route::group(
         // event
         Route::get('/event', 'HomePageController@event');
         Route::get('/event/{slug}', 'HomePageController@detailEvent');
-        Route::get('/live-vote/{slug}', 'HomePageController@liveVote')->middleware('auth');
         Route::get('/daftar-kandidat/{slug}', 'HomePageController@listKandidat')->middleware('auth');
         Route::get('/detail-kandidat/{slug}', 'HomePageController@detailKandidat')->middleware('auth');
         Route::post('/kandidat/pilih/{slug}', 'VoteController@store')->middleware('auth');
@@ -39,9 +30,13 @@ Route::group(
         Route::get('/hasil-vote', 'HomePageController@hasilVote');
         Route::get('/hasil-vote/{slug}', 'HomePageController@detailHasilVote');
         
-        // history
+        // artikel
         Route::get('/artikel', 'HomePageController@artikel');
         Route::get('/artikel/{slug}', 'HomePageController@detailArtikel');
+        
+        //live vote  
+        Route::get('/live-vote/{slug}', 'VoteController@liveVote')->middleware('auth');
+        Route::get('/update-vote-count/{eventSlug}', 'VoteController@updateVoteCount');
     }
 );
 
@@ -69,7 +64,7 @@ Route::group([
         Route::resource('/admin/kandidat', 'KandidatController');
         Route::get('admin/kandidat/{id}/detail-kandidat', 'KandidatController@detailKandidat');
         
-        // event
+        // history
         Route::get('/admin/history', 'HistoryController@index');
         Route::get('admin/history/{id}/detail-history', 'HistoryController@detailHistory');
         Route::get('admin/history/{id}/hasil-voting', 'HistoryController@hasilVoting');
