@@ -126,6 +126,7 @@
                 var votesForKandidat = data.totalVotesKandidat[slug];
                 // Mengidentifikasi elemen dengan slug dan memperbarui kontennya
                 var elementId = "total-votes-kandidat-" + slug;
+                console.log(elementId);
                 document.getElementById(elementId).textContent = votesForKandidat;
             }
         }

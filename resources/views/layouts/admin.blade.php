@@ -203,7 +203,6 @@
                             </li>
 
                             <li class="menu-title">Menu</li>
-
                             <li>
                                 <a href="/admin/mahasiswa" class="waves-effect">
                                     <i class="fa fa-user-plus" aria-hidden="true"></i>
@@ -224,18 +223,8 @@
                                     <span>Kandidat</span>
                                 </a>
                             </li>
-
-                            <li class="menu-title">Sosial</li>
                             
-                            <li>
-                                <a href="/admin/artikel" class=" waves-effect">
-                                    <i class="fas fa-receipt" aria-hidden="true"></i>
-                                    <span>Artikel</span>
-                                </a>
-                            </li>
-
                             <li class="menu-title">Result</li>
-
                             <li>
                                 <a href="/admin/history" class=" waves-effect">
                                     <i class="fa fa-history" aria-hidden="true"></i>
@@ -243,6 +232,13 @@
                                 </a>
                             </li>
 
+                            <li class="menu-title">Sosial</li>
+                            <li>
+                                <a href="/admin/artikel" class=" waves-effect">
+                                    <i class="fas fa-receipt" aria-hidden="true"></i>
+                                    <span>Artikel</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <!-- Sidebar -->

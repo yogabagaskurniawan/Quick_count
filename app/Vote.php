@@ -20,4 +20,21 @@ class Vote extends Model
     {
         return $this->belongsTo('App\Kandidat', 'kandidat_id', 'id');
     }
+
+    public static function menghitungTotalVotes($eventId)
+    {
+        $totalVotes = UserVote::where('event_id', $eventId)->count();
+        return $totalVotes;
+    }
+
+    public static function menghitungTotalVotesKandidat($eventId)
+    {
+        $totalVotesKandidat = [];
+        $kandidats = Kandidat::where('event_id', $eventId)->withCount('vote')->get();
+        foreach ($kandidats as $kandidat) {
+            $totalVotesKandidat[$kandidat->id] = $kandidat->vote()->count();
+        }
+
+        return $totalVotesKandidat;
+    }
 }

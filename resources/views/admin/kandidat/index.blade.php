@@ -47,7 +47,6 @@
                         <th >No</th>
                         <th >Event Kategori</th>
                         <th>Name</th>
-                        <th>Image</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -61,11 +60,11 @@
                             <td>{{ $no++ }}</td>
                             <td>{{ $kandidat->Event->name}}</td>
                             <td>{{ $kandidat->name }}</td>
-                            <td><img src="{{ asset('storage/'.$kandidat->image) }}" style="width:150px"/></td>
                             <td>{{ $kandidat->status }}</td>
                             <td>
                                 <a href="{{ url('admin/kandidat/' . $kandidat->id . '/edit') }}" class="btn btn-warning btn-sm">Edit</a>     
-                                <a href="{{ url('admin/kandidat/' . $kandidat->id . '/detail-kandidat') }}" class="btn btn-success btn-sm">Detail</a>                          
+                                <a href="{{ url('admin/kandidat/' . $kandidat->id . '/detail-kandidat') }}" class="btn btn-primary btn-sm">Detail</a>                          
+                                <a href="{{ url('admin/kandidat/' . $kandidat->id . '/detail-kandidat') }}" class="btn btn-success btn-sm">Live Vote</a>                          
                             </td>
                         </tr>
                         @endforeach

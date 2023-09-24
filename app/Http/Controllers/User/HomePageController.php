@@ -24,31 +24,21 @@ class HomePageController extends Controller
     public function event()
     {
         $events = Event::active()->latest()->paginate(9);
-        
         return view('user.event.eventAll', compact('events'));
     }
 
     public function detailEvent($slug)
     {
         $event = Event::active()->where('slug', $slug)->first();
-
         if (!$event) {
             return redirect('/');
         }
-
-        $tglMulai = Carbon::parse($event->tgl_mulai);
-
-        $currentDate = Carbon::now();
-        // dd($currentDate);
-
-        // jika waktu event belum mulai
-        if ($currentDate->lessThan($tglMulai)) {
+        // Memanggil method untuk memeriksa apakah event belum dimulai
+        if ($this->isEventNotStarted($event->tgl_mulai)) {
             return abort(404);
         }
-
         // session ketika belum login
         session(['intended_route' => 'event/'. $slug]);
-
         return view('user.event.detailEvent', compact('event'));
     }
 
@@ -59,16 +49,11 @@ class HomePageController extends Controller
         if (!$event) {
             return redirect('/');
         }
-
         $kandidat = $event->Kandidats()->active()->get();
-
-        $tglMulai = Carbon::parse($event->tgl_mulai);
-        $currentDate = Carbon::now();
-        // jika waktu event belum mulai
-        if ($currentDate->lessThan($tglMulai)) {
+        // Memanggil method untuk memeriksa apakah event belum dimulai
+        if ($this->isEventNotStarted($event->tgl_mulai)) {
             return abort(404);
         }
-
         return view('user.event.listKandidat', compact('kandidat'));
     }
 
@@ -76,68 +61,37 @@ class HomePageController extends Controller
     public function detailKandidat($slug)
     {
         $kandidat = Kandidat::active()->where('slug', $slug)->first();
-
         if (!$kandidat) {
             return redirect('/');
         }
-
-        $tglMulai = Carbon::parse($kandidat->Event->tgl_mulai);
-        $currentDate = Carbon::now();
-        // jika waktu event belum mulai
-        if ($currentDate->lessThan($tglMulai)) {
+        // Memanggil method untuk memeriksa apakah event belum dimulai
+        if ($this->isEventNotStarted($kandidat->Event->tgl_mulai)) {
             return abort(404);
         }
-
         return view('user.event.detailKandidat', compact('kandidat'));
-    }
-
-    // ========= History Event ============
-
-    public function hasilVote()
-    {
-        $histories = Event::getEventNonAktif()->paginate(9);
-        
-        return view('user.history.hasilVoteAll', compact('histories'));
-    }
-    
-    public function detailHasilVote($slug)
-    {
-        $event = Event::getEventNonAktif()->where('slug', $slug)->first();
-        if (!$event) {
-            return redirect('/');
-        }
-        
-        $totalVotes = UserVote::where('event_id', $event->id)->count();
-
-        if (!$totalVotes) {
-            return redirect('/');
-        }
-
-        // hitung total kandidat
-        $totalVotesKandidat = [];
-        foreach ($event->Kandidats as $kandidat) {
-            $totalVotesKandidat[$kandidat->id] = $kandidat->vote()->count();
-        }
-
-        return view('user.history.detailHasilVote', compact('event', 'totalVotes', 'totalVotesKandidat'));
     }
 
     // ========= Artikel ============
     public function artikel()
     {
         $artikels = Artikel::active()->paginate(9);
-        
         return view('user.artikel.artikelAll', compact('artikels'));
     }
 
     public function detailArtikel($slug)
     {
         $artikel = Artikel::active()->where('slug', $slug)->first();
-
         if (!$artikel) {
             return redirect('/');
         }
-
         return view('user.artikel.detailArtikel', compact('artikel'));
+    }
+
+    // ======== MY FUNCTION ===========
+    private function isEventNotStarted($eventStartTime)
+    {
+        $currentDate = Carbon::now();
+        $eventStartTime = Carbon::parse($eventStartTime);
+        return $currentDate->lessThan($eventStartTime);
     }
 }

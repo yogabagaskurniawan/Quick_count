@@ -46,7 +46,6 @@
                     <tr>
                         <th >No</th>
                         <th>Name</th>
-                        <th>Image</th>
                         <th>Tanggal Mulai</th>
                         <th>Status</th>
                         <th>Action</th>
@@ -60,7 +59,6 @@
                         <tr>
                             <td>{{ $no++ }}</td>
                             <td>{{ $history->name }}</td>
-                            <td><img src="{{ asset('storage/'.$history->image) }}" style="width:150px"/></td>
                             <td>{{ $history->tgl_mulai }}</td>
                             <td>{{ $history->status }}</td>
                             <td>

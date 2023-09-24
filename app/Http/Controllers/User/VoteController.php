@@ -51,14 +51,11 @@ class VoteController extends Controller
         if (!$event) {
             return redirect('/');
         }
-        // hitung total vote
-        $totalVotes = UserVote::where('event_id', $event->id)->count();
-        // hitung total kandidat
-        $totalVotesKandidat = [];
-        foreach ($event->Kandidats as $kandidat) {
-            $totalVotesKandidat[$kandidat->id] = $kandidat->vote()->count();
-        }
 
+        $eventId = $event->id;
+        $totalVotes = Vote::menghitungTotalVotes($eventId);
+        $totalVotesKandidat = Vote::menghitungTotalVotesKandidat($eventId);
+        
         $tglMulai = Carbon::parse($event->tgl_mulai);
         $currentDate = Carbon::now();
         // jika waktu event belum mulai
@@ -74,12 +71,10 @@ class VoteController extends Controller
         if (!$event) {
             return response()->json(['error' => 'Event not found'], 404);
         }
-
         // Set header untuk SSE
         header('Content-Type: text/event-stream');
         header('Cache-Control: no-cache');
         header('Connection: keep-alive');
-
         // Kirim data vote setiap beberapa detik
         while (true) {
             $totalVotes = UserVote::where('event_id', $event->id)->count();
