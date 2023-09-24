@@ -64,6 +64,10 @@ Route::group([
         //artikel
         Route::resource('/admin/artikel', 'ArtikelController');
         Route::get('admin/artikel/{id}/detail-artikel', 'ArtikelController@detailArtikel');
+        //live vote  
+        Route::namespace('user')->group(function () {
+            Route::get('admin/event/{id}/live-vote', 'VoteController@liveVoteInAdmin');
+        });        
     }
 );
 

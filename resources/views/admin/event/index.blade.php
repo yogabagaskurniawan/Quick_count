@@ -64,7 +64,7 @@
                             <td>
                                 <a href="{{ url('admin/event/' . $event->id . '/edit') }}" class="btn btn-warning btn-sm">Edit</a>                              
                                 <a href="{{ url('admin/event/' . $event->id . '/detail-event') }}" class="btn btn-primary btn-sm">Detail</a>                              
-                                <a href="{{ url('admin/event/' . $event->id . '/detail-event') }}" class="btn btn-success btn-sm">Live Vote</a>                              
+                                <a href="{{ url('admin/event/' . $event->id . '/live-vote') }}" class="btn btn-success btn-sm">Live Vote</a>                              
                             </td>
                         </tr>
                         @endforeach

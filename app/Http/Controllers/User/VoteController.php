@@ -44,7 +44,7 @@ class VoteController extends Controller
         return response()->json(['success' => true, 'message' => 'Pilihan suara Anda berhasil disimpan!']);
     }
 
-    // ============= list Live Vote ================
+    // ============= list Live Vote in user ================
     public function liveVote($slug)
     {
         $event = Event::active()->where('slug', $slug)->first();
@@ -82,11 +82,22 @@ class VoteController extends Controller
             foreach ($event->Kandidats as $kandidat) {
                 $totalVotesKandidat[$kandidat->slug] = $kandidat->vote()->count();
             }
-            echo "data: " . json_encode(['slug' => $kandidat->slug, 'totalVotes' => $totalVotes, 'totalVotesKandidat' => $totalVotesKandidat]) . "\n\n";
+            $latestUserVotes = UserVote::where('event_id', $event->id)->with('user');
+            echo "data: " . json_encode(['slug' => $kandidat->slug, 'totalVotes' => $totalVotes, 'totalVotesKandidat' => $totalVotesKandidat, 'latestUserVotes' => $latestUserVotes,]) . "\n\n";
             ob_flush();
             flush();
             sleep(1); // mengatur interval pembaruan 
         }
     }
 
+    // ============= list Live Vote in Admin ================
+    public function liveVoteInAdmin($id)
+    {
+        $event = Event::findOrFail($id);
+
+        $totalVotes = Vote::menghitungTotalVotes($event->id);
+        $totalVotesKandidat = Vote::menghitungTotalVotesKandidat($event->id);
+
+        return view('admin.event.liveVote', compact('event', 'totalVotes', 'totalVotesKandidat'));
+    }
 }

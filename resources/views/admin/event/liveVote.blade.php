@@ -9,74 +9,41 @@
     <link href="{{ asset('assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}" rel="stylesheet" type="text/css">
 @endsection
 
-
 @section('content')
 <!-- start page title -->
 <div class="page-title-box">
     <div class="row align-items-center">
         <div class="col-md-8">
-            <h6 class="page-title">Kandidat</h6>
+            <h6 class="page-title">Hasil Voting {{ $event->name }}</h6>
             <ol class="breadcrumb m-0">
                 <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Kandidat</li>
+                <li class="breadcrumb-item active" aria-current="page">Hasil Voting</li>
             </ol>
         </div>
     </div>
 </div>
 <!-- end page title -->
 
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body">
-                @if(session('success'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        {{ session('success') }}
+<div class="row mt-3 ">
+    <div class="col-lg-12">
+        <h4>Total Voting Keseluruhan: <span id="total-votes-value">{{ $totalVotes }}</span> Votes</h4>
+    </div>
+    @foreach ($event->Kandidats as $kandidat)
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <img class="img-thumbnail rounded me-2" alt="200x200" width="200" src="{{ asset('storage/'.$kandidat->image) }}" data-holder-rendered="true">
+                        </div>
                     </div>
-                @endif
-                <div hidden>
-                <script>
-                    $().DataTable();
-                </script>
-                </div>                    
-                <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-
-                    <thead>
-                    <tr>
-                        <th >No</th>
-                        <th >Event Kategori</th>
-                        <th>Name</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        @php
-                        $no = 1
-                        @endphp
-                        @foreach ($kandidat as $kandidat)
-                        <tr>
-                            <td>{{ $no++ }}</td>
-                            <td>{{ $kandidat->Event->name}}</td>
-                            <td>{{ $kandidat->name }}</td>
-                            <td>{{ $kandidat->status }}</td>
-                            <td>
-                                <a href="{{ url('admin/kandidat/' . $kandidat->id . '/edit') }}" class="btn btn-warning btn-sm">Edit</a>     
-                                <a href="{{ url('admin/kandidat/' . $kandidat->id . '/detail-kandidat') }}" class="btn btn-primary btn-sm">Detail</a>                          
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-
-            </div>
-            <div class="card-footer"> 
-                <a href="{{ url('admin/kandidat/create') }}" class="btn btn-info">Add new</a>
+                    <h2>{{ $kandidat->name }}</h2>
+                    <h4><span id="total-votes-kandidat-{{ $kandidat->slug }}">{{ $totalVotesKandidat[$kandidat->id] }}</span> Votes</h4>
+                </div>
             </div>
         </div>
-    </div> <!-- end col -->
-</div> <!-- end row -->
+    @endforeach
+</div>
 @endsection
 
 @section('script')
@@ -95,8 +62,25 @@
     <!-- Responsive examples -->
     <script src="{{ asset('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') }}"></script>
-
     <!-- Datatable init js -->
     <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script> 
+    {{-- live voting --}}
+    <script>
+        var eventSlug = "{{ $event->slug }}"; // Ambil slug dari sumber data
+        var eventSource = new EventSource('/update-vote-count/' + eventSlug);
+        eventSource.onmessage = function(event) {
+            var data = JSON.parse(event.data);
+            // Menggunakan data.totalVotes
+            document.getElementById('total-votes-value').textContent = data.totalVotes;
+            // Iterasi melalui data.totalVotesKandidat
+            for (var slug in data.totalVotesKandidat) {
+                if (data.totalVotesKandidat.hasOwnProperty(slug)) {
+                    var votesForKandidat = data.totalVotesKandidat[slug];
+                    // Mengidentifikasi elemen dengan slug dan memperbarui kontennya
+                    var elementId = "total-votes-kandidat-" + slug;
+                    document.getElementById(elementId).textContent = votesForKandidat;
+                }
+            }
+        };
+    </script>
 @endsection
-
