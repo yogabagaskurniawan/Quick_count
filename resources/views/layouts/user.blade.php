@@ -50,6 +50,7 @@
                 <nav>
                     <ul class="menu">
                         <li><a href="/">Home</a></li>
+                        <li><a href="#about">Tentang UNISS</a></li>
                         <li><a href="/event">Event</a></li>
                         <li><a href="/hasil-event">Hasil Event</a></li>
                     </ul>
@@ -68,6 +69,9 @@
                             <ul class="header-menu d-flex flex-row justify-content-center menu">
                                 <li class="px-3">
                                     <a class="menu-link" href="/">Home</a>
+                                </li>
+                                <li class="px-3">
+                                    <a class="menu-link" href="#about">Tentang UNISS</a>
                                 </li>
                                 <li class="px-3">
                                     <a class="menu-link" href="/event">Event</a>

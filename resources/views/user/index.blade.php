@@ -46,7 +46,7 @@
 <!-- end home-banner -->
 
 <!-- start single blog banner -->
-<section class="single-blog-contents">
+<section class="single-blog-contents" id="about">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -57,7 +57,7 @@
                             <p>My Kampus</p>
                         </div>
                         <h2 class="black-color line-height-3 h2 text-uppercase text-center">
-                            KATA-KATA MUTIARA
+                            TENTANG UNISS
                         </h2>
                     </div>
                     <div class="single-page-blog-content-body">
@@ -174,53 +174,7 @@
     </div>
 </section>
 <!-- end hasil event -->
-<!-- start hasil event -->
-<section class="blogs">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="blogs-wrapper">
-                    <div class="section-heading-middle">
-                        <div class="sub-heading d-flex align-items-center mx-auto">
-                            <img src="{{asset('guests/img/orangeDot.png')}}" alt="orange-dot">
-                            <p>Artikel</p>
-                        </div>
-                        <h2 class="black-color line-height-3 h2 text-uppercase text-center">
-                            ARTIKEL TERBARU
-                        </h2>
-                    </div>
-                    <div class="blogs-container row-mobile-margin mt-50">
-                        @forelse ($artikel as $artikel)
-                            <div class="card p-0 blog-card">
-                                <div class="img-overlay">
-                                    <img src="{{ asset('storage/'.$artikel->image) }}" class="card-img-top img-fluid blog-card-img"
-                                        alt="blog image">
-                                </div>
-                                <div class="card-body blog-card-body">
-                                    <p class="p font-urbanist line-height-7 blog-card-date fw-400 mb-20">
-                                        {{ \Carbon\Carbon::parse($artikel->created_at)->format('d F, Y H:i:s') }}
-                                    </p>                                    
-                                    <h3 class="card-title h3 fw-600 line-height-3 black-color">{{ $artikel->name }}</h3>
-                                    <a href="/artikel/{{ $artikel->slug }}" class="blog-card-btn d-flex align-items-center mt-4">
-                                        <span class="blog-card-btn-text mr-10 .font-urbanist fw-600 line-height-7 orange-color">Lihat</span>
-                                        <i class="fa-solid fa-arrow-right"></i>
-                                    </a> 
-                                </div>
-                            </div>
-                        @empty
-                        <div class="col-lg-4 mr-3">
-                            <p style="margin-left: 20px">Belum ada artikel terbaru!</p>
-                        </div>
-                        @endforelse
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- end hasil event -->
 
-<!-- start partners -->
 <section class="partners">
     <div class="container">
         <div class="row">
@@ -293,61 +247,52 @@
         </div>
     </div>
 </section>
-<!-- end partners -->
 
-<!-- start testimonial -->
-<section class="testimonial testimonial-white-bg">
+<!-- start hasil event -->
+<section class="blogs">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <div class="testimonial-wrapper">
+                <div class="blogs-wrapper">
                     <div class="section-heading-middle">
                         <div class="sub-heading d-flex align-items-center mx-auto">
                             <img src="{{asset('guests/img/orangeDot.png')}}" alt="orange-dot">
-                            <p class="text-black">Lord</p>
+                            <p>Artikel</p>
                         </div>
-                        <h2 class="text-black line-height-3 h2 text-uppercase text-center">
-                            Pimpinan Universitas
+                        <h2 class="black-color line-height-3 h2 text-uppercase text-center">
+                            ARTIKEL TERBARU
                         </h2>
                     </div>
-                    <div class="row d-flex justify-content-evenly mt-5">
-                        <div class="col-4">
-                            <div class="testimonial-card-white">
-                                <div class="bio d-flex align-items-center">
-                                    <img class="bio-img" src="{{asset('guests/img/uniss.png')}}"
-                                        alt="testimonial-image">
-                                    <div>
-                                        <h3 class="h3 fw-500 line-height-3 black-color">Mursalim</h3>
-                                        <p class="p fw-400 line-height-7 secondary-black">REKTOR</p>
-                                    </div>
+                    <div class="blogs-container row-mobile-margin mt-50">
+                        @forelse ($artikel as $artikel)
+                            <div class="card p-0 blog-card">
+                                <div class="img-overlay">
+                                    <img src="{{ asset('storage/'.$artikel->image) }}" class="card-img-top img-fluid blog-card-img"
+                                        alt="blog image">
                                 </div>
-                                <p class="p line-height-7 fw-400 secondary-black mt-20">
-                                    “visi dan misi.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="testimonial-card-white">
-                                <div class="bio d-flex align-items-center">
-                                    <img class="bio-img" src="{{asset('guests/img/avatar.jpg')}}"
-                                        alt="testimonial-image">
-                                    <div>
-                                        <h3 class="h3 fw-500 line-height-3 black-color">Achsin</h3>
-                                        <p class="p fw-400 line-height-7 secondary-black">WAREK</p>
-                                    </div>
+                                <div class="card-body blog-card-body">
+                                    <p class="p font-urbanist line-height-7 blog-card-date fw-400 mb-20">
+                                        {{ \Carbon\Carbon::parse($artikel->created_at)->format('d F, Y H:i:s') }}
+                                    </p>                                    
+                                    <h3 class="card-title h3 fw-600 line-height-3 black-color">{{ $artikel->name }}</h3>
+                                    <a href="/artikel/{{ $artikel->slug }}" class="blog-card-btn d-flex align-items-center mt-4">
+                                        <span class="blog-card-btn-text mr-10 .font-urbanist fw-600 line-height-7 orange-color">Lihat</span>
+                                        <i class="fa-solid fa-arrow-right"></i>
+                                    </a> 
                                 </div>
-                                <p class="p line-height-7 fw-400 secondary-black mt-20">
-                                    “visi dan misi.
-                                </p>
                             </div>
+                        @empty
+                        <div class="col-lg-4 mr-3">
+                            <p style="margin-left: 20px">Belum ada artikel terbaru!</p>
                         </div>
+                        @endforelse
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- end testimonial -->
+<!-- end hasil event -->
 @endsection
 
 @section('script')
