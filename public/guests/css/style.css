@@ -2090,7 +2090,7 @@ header {
 .testimonial-card-white {
     padding: 40px 30px;
     border-radius: 6px;
-    background-color: #fff;
+    background-color: #fff5ef;
 }
 
 .testimonial .owl-theme .owl-nav.disabled + .owl-dots {
@@ -2176,10 +2176,15 @@ header {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    flex-direction: column; /* Mengatur elemen menjadi tumpukan vertikal */
+    text-align: center; /* Teks menjadi pusat horizontal */
+    height: auto; /* Sesuaikan ketinggian dengan konten */
 }
 
 .partner-card img {
     transition: all 0.8s;
+    max-width: 100%; /* Hindari gambar melebihi batas parent */
+    height: auto; /* Hindari gambar melebihi batas parent */
 }
 
 .partner-card:hover img {

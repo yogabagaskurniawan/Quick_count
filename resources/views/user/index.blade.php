@@ -44,6 +44,38 @@
     </div>
 </section>
 <!-- end home-banner -->
+
+<!-- start single blog banner -->
+<section class="single-blog-contents">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="blog-details-wrapper">
+                    <div class="section-heading-middle">
+                        <div class="sub-heading d-flex align-items-center mx-auto">
+                            <img src="{{ asset('guests/img/orangeDot.png')}}" alt="orange-dot">
+                            <p>My Kampus</p>
+                        </div>
+                        <h2 class="black-color line-height-3 h2 text-uppercase text-center">
+                            KATA-KATA MUTIARA
+                        </h2>
+                    </div>
+                    <div class="single-page-blog-content-body">
+                        <div class="blog-content-body-quotation mt-50">
+                            <img class="blog-quotation-icon mb-30" src="{{ asset('guests/img/quotation.png')}}" alt="quotation icon">
+                            <blockquote class="h4 line-height-6 fw-600 black-color mb-50 row-mobile-margin">
+                                UNISS(Universitas Selamat Sri) adalah lembaga pendidikan tinggi yang berdedikasi
+                                untuk memberikan pendidikan berkualitas tinggi dan pengalaman belajar
+                                yang holistik bagi para mahasiswa. Terletak di lingkungan yang inspiratif dan modern,
+                                kampus kami dirancang untuk mendorong pertumbuhan akademik, pribadi, dan profesional.
+                            </blockquote>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end single blog banner -->
     
 <!-- start event -->
 <section class="blogs">
@@ -187,6 +219,135 @@
     </div>
 </section>
 <!-- end hasil event -->
+
+<!-- start partners -->
+<section class="partners">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="partners-wrapper">
+                    <div class="section-heading-middle">
+                        <div class="sub-heading d-flex align-items-center mx-auto">
+                            <img src="{{asset('guests/img/orangeDot.png')}}" alt="orange-dot">
+                            <p>Fakultas</p>
+                        </div>
+                        <h2 class="black-color line-height-3 h2 text-uppercase text-center">
+                            SEMUA FAKULTAS
+                        </h2>
+                    </div>
+                    <div class="partner-list-container row-mobile-margin mt-50">
+                        <div class="owl-carousel owl-theme">
+                            <div class="item">
+                                <div class="partner-card">
+                                    <img class="text-center img-fluid partner-img" src="{{asset('guests/img/uniss.png')}}"
+                                        alt="partner-image">
+                                        <span>TI</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="partner-card">
+                                    <img class="text-center img-fluid partner-img" src="{{asset('guests/img/uniss.png')}}"
+                                        alt="partner-image">
+                                        <span>DKV</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="partner-card">
+                                    <img class="text-center img-fluid partner-img" src="{{asset('guests/img/uniss.png')}}"
+                                        alt="partner-image">
+                                        <span>PSIKOLOGI</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="partner-card">
+                                    <img class="text-center img-fluid partner-img" src="{{asset('guests/img/uniss.png')}}"
+                                        alt="partner-image">
+                                        <span>MANAJEMEN</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="partner-card">
+                                    <img class="text-center img-fluid partner-img" src="{{asset('guests/img/uniss.png')}}"
+                                        alt="partner-image">
+                                        <span>HUKUM</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="partner-card">
+                                    <img class="text-center img-fluid partner-img" src="{{asset('guests/img/uniss.png')}}"
+                                        alt="partner-image">
+                                        <span>SIPIL</span>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="partner-card">
+                                    <img class="text-center img-fluid partner-img" src="{{asset('guests/img/uniss.png')}}"
+                                        alt="partner-image">
+                                        <span>ILKOM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end partners -->
+
+<!-- start testimonial -->
+<section class="testimonial testimonial-white-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="testimonial-wrapper">
+                    <div class="section-heading-middle">
+                        <div class="sub-heading d-flex align-items-center mx-auto">
+                            <img src="{{asset('guests/img/orangeDot.png')}}" alt="orange-dot">
+                            <p class="text-black">Lord</p>
+                        </div>
+                        <h2 class="text-black line-height-3 h2 text-uppercase text-center">
+                            Pimpinan Universitas
+                        </h2>
+                    </div>
+                    <div class="row d-flex justify-content-evenly mt-5">
+                        <div class="col-4">
+                            <div class="testimonial-card-white">
+                                <div class="bio d-flex align-items-center">
+                                    <img class="bio-img" src="{{asset('guests/img/uniss.png')}}"
+                                        alt="testimonial-image">
+                                    <div>
+                                        <h3 class="h3 fw-500 line-height-3 black-color">Mursalim</h3>
+                                        <p class="p fw-400 line-height-7 secondary-black">REKTOR</p>
+                                    </div>
+                                </div>
+                                <p class="p line-height-7 fw-400 secondary-black mt-20">
+                                    “visi dan misi.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="testimonial-card-white">
+                                <div class="bio d-flex align-items-center">
+                                    <img class="bio-img" src="{{asset('guests/img/avatar.jpg')}}"
+                                        alt="testimonial-image">
+                                    <div>
+                                        <h3 class="h3 fw-500 line-height-3 black-color">Achsin</h3>
+                                        <p class="p fw-400 line-height-7 secondary-black">WAREK</p>
+                                    </div>
+                                </div>
+                                <p class="p line-height-7 fw-400 secondary-black mt-20">
+                                    “visi dan misi.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end testimonial -->
 @endsection
 
 @section('script')

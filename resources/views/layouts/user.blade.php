@@ -107,7 +107,7 @@
 @yield('content')
 
 <!-- start footer -->
-<section class="footer">
+<section class="footer mt-5">
     <div class="footer-wrapper">
         <div class="footer-bottom">
             <div class="container">
