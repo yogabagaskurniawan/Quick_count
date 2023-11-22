@@ -41,8 +41,6 @@ Auth::routes([
     'register' => false,
 ]);
 
-Auth::routes();
-
 // admin
 Route::group([
     'middleware' => ['auth', 'role:admin'] 
