@@ -16,7 +16,7 @@ class CreateEventsTable extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->longText('deskripsi');
             $table->enum('status',['aktif', 'non-aktif', 'delete']); 
             $table->string('slug');

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ErtikelTable extends Migration
+class CreateArtikelTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,7 +16,7 @@ class ErtikelTable extends Migration
         Schema::create('artikel', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->longText('deskripsi');
             $table->string('slug');
             $table->enum('status',['aktif', 'non-aktif', 'delete']); 

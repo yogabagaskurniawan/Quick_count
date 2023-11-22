@@ -16,20 +16,20 @@ class UsersTableSeeder extends Seeder
         $adminUsers = [ // Perubahan pada variabel ini
             [
                 'name' => 'Admin',
-                'nim' => '20129090',
-                'password' => Hash::make('00000'),
+                'nim' => '111',
+                'password' => Hash::make('123'),
                 'role' => 'admin'
             ],
             [
                 'name' => 'Bagas',
-                'nim' => '20129091',
-                'password' => Hash::make('00000'),
+                'nim' => '222',
+                'password' => Hash::make('123'),
                 'role' => 'admin'
             ],
             [
                 'name' => 'Irwan',
-                'nim' => '20129092',
-                'password' => Hash::make('00000'),
+                'nim' => '333',
+                'password' => Hash::make('123'),
             ],
         ];
 
